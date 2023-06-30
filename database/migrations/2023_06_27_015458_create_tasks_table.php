@@ -15,10 +15,12 @@ return new class extends Migration
             $table->id();
             $table->string("task_title", 50);
             $table->string("description");
+            $table->string("status", 45);
+            $table->date("date");
             $table->unsignedBigInteger("user_id");
             $table->timestamps();
 
-            $table->foreign("user_id")->references("id")->on("users");
+            $table->foreign("user_id")->references("id")->on("users")->onDelete("cascade")->onUpdate("cascade");
         });
     }
 
