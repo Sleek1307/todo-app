@@ -1,7 +1,10 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 # todo-api
 API para una todo app con capacidad de registro de usuario
 =======
+=======
+>>>>>>> 8777f141a5b41a5903a9ea8710245c3336b28d38
 <p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
 
 <p align="center">
@@ -68,4 +71,7 @@ If you discover a security vulnerability within Laravel, please send an e-mail t
 ## License
 
 The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+<<<<<<< HEAD
 >>>>>>> 8777f14 (Se crea el proyecto en laravel)
+=======
+>>>>>>> 8777f141a5b41a5903a9ea8710245c3336b28d38
