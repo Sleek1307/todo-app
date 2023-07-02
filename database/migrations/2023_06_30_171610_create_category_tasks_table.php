@@ -13,12 +13,12 @@ return new class extends Migration
     {
         Schema::create('category_tasks', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger("category_id");
-            $table->unsignedBigInteger("task_id");
+            $table->unsignedBigInteger("category_id")->unique();
+            $table->unsignedBigInteger("task_id")->unique();
             $table->timestamps();
 
-            $table->foreign("category_id")->references("id")->on("categories");
-            $table->foreign("task_id")->references("id")->on("tasks");
+            $table->foreign("category_id")->references("id")->on("categories")->onDelete("cascade")->onUpdate("cascade");
+            $table->foreign("task_id")->references("id")->on("tasks")->onDelete("cascade")->onUpdate("cascade");
         });
     }
 
