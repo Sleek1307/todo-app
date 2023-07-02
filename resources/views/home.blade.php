@@ -18,7 +18,7 @@
             <ul class="border-r px-2">
                 <span class="text-xl text-white font-semibold">Haciendo</span>
                 <li class="rounded-xl border text-white custom-li">
-                    <span class="p-2 pl-5 bg-transparent">Resumen de el principe</span>
+                    <span class="p-2 pl-5 bg-transparent">Reporte de ventas</span>
                     <div>
                         <h2 class="pl-5 text-gray-300">13-00 - 14:00</h2>
                     </div>
@@ -27,7 +27,7 @@
             <ul class="px-2">
                 <span class="text-xl text-white font-semibold">Terminado</span>
                 <li class="rounded-xl border text-white custom-li">
-                    <span class="p-2 pl-5 bg-transparent">Resumen de el principe</span>
+                    <span class="p-2 pl-5 bg-transparent">Barrer la casa</span>
                     <div>
                         <h2 class="pl-5 text-gray-300">13-00 - 14:00</h2>
                     </div>
