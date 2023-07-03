@@ -15,3 +15,27 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', HomeController::class);
+
+Route::prefix("auth")->group(function () {
+
+    Route::get("/login", function () {
+        return "Estas en el login";
+    });
+
+    Route::post("/login", function () {
+        return "Estas iniciando sesion";
+    });
+
+    Route::get("/forgotPassword", function () {
+        return "Pagina de restaurar contraseña";
+    });
+
+    Route::post("/restorePassword", function () {
+        return "Estas restaurando la contraseña";
+    });
+
+    Route::post("/sendRestoreMail", function() {
+        return "Estas enviando el email de recuperacion";
+    });
+
+});

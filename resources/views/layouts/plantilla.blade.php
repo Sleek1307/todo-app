@@ -7,6 +7,9 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>To-Do</title>
     @vite('resources/css/app.css')
+    <style>
+        @import url("css/app.css")
+    </style>
 </head>
 
 <body class="custom-background">
@@ -107,8 +110,8 @@
 
 </body>
 
-<style>
-    .custom-background {
+/* <style>
+     .custom-background {
         background-image: url('img/background-moon.png');
         background-repeat: no-repeat;
         background-size: cover;
@@ -116,7 +119,7 @@
     }
     .blur-background {
         backdrop-filter: blur(15px);
-    }
-</style>
+    } 
+</style> */
 
 </html>

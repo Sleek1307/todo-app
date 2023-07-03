@@ -1,0 +1,14 @@
+body{
+    background-color: black;
+}
+
+.custom-background {
+    background-image: url('../img/background-moon.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+
+.blur-background {
+    backdrop-filter: blur(15px);
+}
