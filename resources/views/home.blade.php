@@ -5,40 +5,47 @@
         <h1 class="pt-2 px-5 text-2xl text-white font-bold">Estas son tus tareas de hoy</h1>
         <h2 class="mt-[-8px] px-6 font-light text-sm text-gray-400">Martes 15 de Febrero</h2>
         <br>
-        <div class="grid grid-cols-3 h-4/5">
-            <ul class="border-r px-2">
-                <span class="text-xl text-white font-semibold">Pendiente</span>
-                <li class="rounded-xl border text-white custom-li">
-                    <span class="p-2 pl-5 bg-transparent">Resumen de el principe</span>
-                    <div>
-                        <h2 class="pl-5 text-gray-300">13-00 - 14:00</h2>
-                    </div>
-                </li>
-            </ul>
-            <ul class="border-r px-2">
+        <div class="grid grid-cols-3 h-full">
+            <ul class="overflow-y-auto h-full border-r px-2 scroll-smooth ">
                 <span class="text-xl text-white font-semibold">Haciendo</span>
-                <li class="rounded-xl border text-white custom-li">
-                    <span class="p-2 pl-5 bg-transparent">Reporte de ventas</span>
-                    <div>
-                        <h2 class="pl-5 text-gray-300">13-00 - 14:00</h2>
-                    </div>
-                </li>
+
+                @foreach ($tasks_Pendiente as $task)
+                    <br>
+                    <li class="rounded-xl border text-white bg-gradient-to-r from-red-300 from-5% to-transparent to-5% ">
+                        <div class="p-2 pl-5 bg-transparent my-0"> {{ $task->task_title }} </div>
+                        <div>
+                            <h2 class="pl-5 text-gray-300">{{ $task->date }}</h2>
+                        </div>
+                    </li>
+                @endforeach
             </ul>
-            <ul class="px-2">
-                <span class="text-xl text-white font-semibold">Terminado</span>
-                <li class="rounded-xl border text-white custom-li">
-                    <span class="p-2 pl-5 bg-transparent">Barrer la casa</span>
-                    <div>
-                        <h2 class="pl-5 text-gray-300">13-00 - 14:00</h2>
-                    </div>
-                </li>
+            <ul class="overflow-y-auto h-full border-r px-2 scroll-smooth ">
+                <span class="text-xl text-white font-semibold">Haciendo</span>
+
+                @foreach ($tasks_Haciendo as $task)
+                    <br>
+                    <li class="rounded-xl border text-white bg-gradient-to-r from-red-300 from-5% to-transparent to-5%">
+                        <div class="p-2 pl-5 bg-transparent my-0"> {{ $task->task_title }} </div>
+                        <div>
+                            <h2 class="pl-5 text-gray-300">{{ $task->date }}</h2>
+                        </div>
+                    </li>
+                @endforeach
+            </ul>
+            <ul class="overflow-y-auto h-full px-2 scroll-smooth ">
+                <span class="text-xl text-white font-semibold">Haciendo</span>
+
+                @foreach ($tasks_Terminado as $task)
+                    <br>
+                    <li class="rounded-xl border text-white bg-gradient-to-r from-red-300 from-5% to-transparent to-5% ">
+                        <div class="p-2 pl-5 bg-transparent"> {{ $task->task_title }} </div>
+                        <div>
+                            <h2 class="pl-5 text-gray-300">{{ $task->date }}</h2>
+                        </div>
+                    </li>
+                @endforeach
             </ul>
         </div>
     </div>
 @endsection
 
-<style>
-    .custom-li {
-        background-image: linear-gradient(to right, rgb(252 165 165) 5%, transparent 5%)
-    }
-</style>
