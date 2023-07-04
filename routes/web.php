@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\TaskController;
+use App\Http\Controllers\AuthController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -19,9 +20,7 @@ Route::get('/', HomeController::class);
 
 Route::prefix("auth")->group(function () {
 
-    Route::get("/login", function () {
-        return "Estas en el login";
-    });
+    Route::get("/login",[AuthController::class, "showLoginView"]);
 
     Route::post("/login", function () {
         return "Estas iniciando sesion";

@@ -1,4 +1,4 @@
-@extends('layouts.plantilla')
+@extends('layouts.auth')
 
 @section('content')
 @endsection
