@@ -1,12 +1,14 @@
-@extends('layouts.plantilla')
+@extends('layouts.home')
 
 @section('content')
-    <div class="col-span-4 px-1">
-        <h1 class="pt-2 px-5 text-2xl text-white font-bold">Estas son tus tareas de hoy</h1>
-        <h2 class="mt-[-8px] px-6 font-light text-sm text-gray-400">Martes 15 de Febrero</h2>
-        <br>
-        <div class="grid grid-cols-3 h-full">
-            <ul class="overflow-y-auto h-full border-r px-2 scroll-smooth ">
+    <div class="h-full aspect-auto flex grow flex-col px-1">
+        <div class="flex flex-col">
+            <h1 class="pt-1 px-5 text-2xl text-white font-bold">Estas son tus tareas de hoy</h1>
+            <h2 class="mt-[-8px] px-5 pt-1 font-light text-sm text-gray-400">Martes 15 de Febrero</h2>
+        </div>
+
+        <div class="flex flex-row overflow-hidden grow mb-3">
+            <ul class="w-4/12 overflow-y-auto h-full border-r px-2 scroll-smooth ">
                 <span class="text-xl text-white font-semibold">Haciendo</span>
 
                 @foreach ($tasks_Pendiente as $task)
@@ -19,7 +21,7 @@
                     </li>
                 @endforeach
             </ul>
-            <ul class="overflow-y-auto h-full border-r px-2 scroll-smooth ">
+            <ul class="w-4/12 overflow-y-auto h-full border-r px-2 scroll-smooth ">
                 <span class="text-xl text-white font-semibold">Haciendo</span>
 
                 @foreach ($tasks_Haciendo as $task)
@@ -32,7 +34,7 @@
                     </li>
                 @endforeach
             </ul>
-            <ul class="overflow-y-auto h-full px-2 scroll-smooth ">
+            <ul class="w-4/12 overflow-y-auto h-full px-2 scroll-smooth ">
                 <span class="text-xl text-white font-semibold">Haciendo</span>
 
                 @foreach ($tasks_Terminado as $task)
@@ -46,6 +48,9 @@
                 @endforeach
             </ul>
         </div>
+        {{--
+        
+            
+        </div> --}}
     </div>
 @endsection
-

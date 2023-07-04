@@ -15,6 +15,6 @@ class HomeController extends Controller
         $tasks_Haciendo = Task::where('status', '1')->orderBy('id', 'asc')->paginate();
         $tasks_Terminado = Task::where('status', '2')->orderBy('id', 'asc')->paginate();
 
-        return view('home', compact('tasks_Pendiente', 'tasks_Haciendo', 'tasks_Terminado'));
+        return view('todayTasks', compact('tasks_Pendiente', 'tasks_Haciendo', 'tasks_Terminado'));
     }
 }
