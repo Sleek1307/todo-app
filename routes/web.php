@@ -16,8 +16,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', HomeController::class);
+Route::get('/', HomeController::class)->name('home');
 
+//? Autentification Routes
 Route::prefix("auth")->group(function () {
 
     Route::get("/login",[AuthController::class, "showLoginView"]);
@@ -39,3 +40,21 @@ Route::prefix("auth")->group(function () {
     });
 
 });
+
+//? Tasks Routes
+/* Route::controller(TaskController::class)->group(function(){
+    Route::get('tasks/create', 'create')->name('tasks.create');
+
+    Route::post('tasks', 'store')->name('tasks.store');
+
+    Route::get('tasks/{task}', 'show')->name('tasks.show');
+
+    Route::get('tasks/{task}/edit', 'edit')->name('tasks.edit');
+
+    Route::put('tasks/{task}', 'update')->name('tasks.update');
+
+    Route::get('tasks/{task}', 'destroy')->name('tasks.destroy');
+});
+ */
+
+Route::resource('tasks', TaskController::class);
