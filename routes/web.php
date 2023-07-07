@@ -27,9 +27,7 @@ Route::prefix("auth")->group(function () {
         return "Estas iniciando sesion";
     });
 
-    Route::get("/forgotPassword", function () {
-        return "Pagina de restaurar contraseña";
-    });
+    Route::get("/restore", [AuthController::class, "showRestoreView"]);
 
     Route::post("/restorePassword", function () {
         return "Estas restaurando la contraseña";
