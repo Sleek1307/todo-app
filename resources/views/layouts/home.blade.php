@@ -4,15 +4,15 @@
 <div class="h-5/6 w-11/12 flex items-center justify-center">
     <div class="flex justify-start items-start h-full w-full bg-transparent rounded-3xl border">
         {{-- * INICIO lateral nav bar --}}
-        <div class="h-full w-60 aspect-auto p-3 dark:bg-gray-100 dark:text-gray-900 rounded-l-3xl">
+        <div class="h-full w-60  p-3 bg-gray-100 text-gray-900 rounded-l-3xl">
             <div class="flex items-center p-2 space-x-4 border-b border-gray-500">
                 <img src="https://source.unsplash.com/100x100/?portrait" alt=""
-                    class="w-12 h-12 rounded-full dark:bg-gray-700">
+                    class="w-12 h-12 rounded-full bg-gray-700">
                 <div>
                     <h2 class="text-lg font-semibold">John Doe</h2>
                     <span class="flex items-center space-x-1">
                         <a rel="noopener noreferrer" href="#"
-                            class="text-xs hover:underline dark:text-gray-400">View profile</a>
+                            class="text-xs hover:underline text-gray-400">View profile</a>
                     </span>
                 </div>
             </div>
