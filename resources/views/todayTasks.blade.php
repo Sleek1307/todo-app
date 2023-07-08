@@ -8,56 +8,68 @@
         </div>
 
         <div class="flex flex-row overflow-hidden grow mb-3">
-            <ul class="w-4/12 overflow-y-auto h-full border-r px-2 scroll-smooth ">
+            <div class="w-4/12 overflow-y-auto h-full border-r px-2 scroll-smooth ">
                 <span class="text-xl text-white font-semibold">Pendiente</span>
-
-                @foreach ($tasks_Pendiente as $task)
-                    <br>
-                    <a href="{{ route('tasks.show', $task) }}">
-                        <li class="rounded-xl border text-white bg-gradient-to-r from-red-300 from-5% to-transparent to-5% ">
-                            <div class="p-2 pl-5 bg-transparent my-0"> {{ $task->task_title }} </div>
-                            <div>
-                                <h2 class="pl-5 text-gray-300">{{ $task->date }}</h2>
-                            </div>
-                        </li>
-                    </a>
-                @endforeach
-            </ul>
-            <ul class="w-4/12 overflow-y-auto h-full border-r px-2 scroll-smooth ">
+                <ul>
+                    @foreach ($tasks_Pendiente as $task)
+                        <br>
+                        <a href="{{ route('tasks.show', $task) }}">
+                            <li
+                                class="rounded-xl border text-white bg-gradient-to-r from-red-300 from-5% to-transparent to-5% ">
+                                <div class="p-1 pl-5 bg-transparent my-0"> {{ $task->task_title }} </div>
+                                <div>
+                                    <h2 class="pl-5 text-gray-300">{{ $task->date }}</h2>
+                                </div>
+                            </li>
+                        </a>
+                    @endforeach
+                </ul>
+            </div>
+            <div class="w-4/12 overflow-y-auto h-full border-r px-2 scroll-smooth ">
                 <span class="text-xl text-white font-semibold">Haciendo</span>
-
-                @foreach ($tasks_Haciendo as $task)
-                    <br>
-                    <a href="{{ route('tasks.show', $task) }}">
-                        <li class="rounded-xl border text-white bg-gradient-to-r from-red-300 from-5% to-transparent to-5%">
-                            <div class="p-2 pl-5 bg-transparent my-0"> {{ $task->task_title }} </div>
-                            <div>
-                                <h2 class="pl-5 text-gray-300">{{ $task->date }}</h2>
-                            </div>
-                        </li>
-                    </a>
-                @endforeach
-            </ul>
-            <ul class="w-4/12 overflow-y-auto h-full px-2 scroll-smooth ">
+                <ul id="tasksHaciendo">
+                    @foreach ($tasks_Haciendo as $task)
+                        <br>
+                        <a href="{{ route('tasks.show', $task) }}">
+                            <li
+                                class="rounded-xl border text-white bg-gradient-to-r from-red-300 from-5% to-transparent to-5%">
+                                <div class="p-1 pl-5 bg-transparent my-0"> {{ $task->task_title }} </div>
+                                <div>
+                                    <h2 class="pl-5 text-gray-300">{{ $task->date }}</h2>
+                                </div>
+                            </li>
+                        </a>
+                    @endforeach
+                </ul>
+            </div>
+            <div class="w-4/12 overflow-y-auto h-full px-2 scroll-smooth ">
                 <span class="text-xl text-white font-semibold">Terminado</span>
-
-                @foreach ($tasks_Terminado as $task)
-                    <br>
-                    <a href="{{ route('tasks.show', $task) }}">
-                        <li
-                            class="rounded-xl border text-white bg-gradient-to-r from-red-300 from-5% to-transparent to-5% ">
-                            <div class="p-2 pl-5 bg-transparent"> {{ $task->task_title }} </div>
-                            <div>
-                                <h2 class="pl-5 text-gray-300">{{ $task->date }}</h2>
-                            </div>
-                        </li>
-                    </a>
-                @endforeach
-            </ul>
+                <ul id="tasksTerminado">
+                    @foreach ($tasks_Terminado as $task)
+                        <br>
+                        <a href="{{ route('tasks.show', $task) }}">
+                            <li
+                                class="rounded-xl border text-white bg-gradient-to-r from-red-300 from-5% to-transparent to-5% ">
+                                <div class="p-1 pl-5 bg-transparent"> {{ $task->task_title }} </div>
+                                <div>
+                                    <h2 class="pl-5 text-gray-300">{{ $task->date }}</h2>
+                                </div>
+                            </li>
+                        </a>
+                    @endforeach
+                </ul>
+            </div>
         </div>
-        {{--
-
-
-        </div> --}}
+        {{-- </div> --}}
     </div>
+
+    @push('js')
+        <script src="https://cdn.jsdelivr.net/npm/sortablejs@latest/Sortable.min.js"></script>
+        <script>
+            new Sortable(tasksTerminado, {
+                animation: 150,
+                ghostClass: 'bg-blue-100'
+            });
+        </script>
+    @endpush
 @endsection
