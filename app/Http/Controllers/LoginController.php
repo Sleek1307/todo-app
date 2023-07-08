@@ -16,7 +16,7 @@ class LoginController extends Controller
         $credentials = $request->getCredentials();
 
         if (condition) {
-            # code...
+            
         }
     }
 }
