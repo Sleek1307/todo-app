@@ -1,0 +1,16 @@
+/* Bloques */
+.input-wrapper {
+    position: relative
+}
+
+/* elemento */
+.input-icon {
+    position: absolute  ;
+    top: 48%;
+    left: 100%;
+    transform: translateX(-120%);
+}
+
+.input-icon:hover{
+    cursor: pointer;
+}

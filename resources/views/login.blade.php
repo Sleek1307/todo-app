@@ -2,7 +2,8 @@
 
 @section('form')
     <h1 class="text-4xl font-extrabold drop-shadow-md text-[#353560] pb-12">Inicio de sesion</h1>
-    <form action="">
+    <form action="{{ route('auth.login') }}">
+        @csrf
         <div class="flex flex-col items-center justify-center gap-2">
             <div class="flex flex-col items-start justify-center">
                 <label for="user_id" class="text-sm font-bold text-[#353560]">Email o Nombre de usuario</label>
@@ -14,19 +15,20 @@
                 <input name="password" id="password" type="text" placeholder="your password"
                     class="border rounded-md px-2 py-1 w-[300px]">
             </div>
-            <div class="flex items-center justify-center gap-5 w-[350px]">
-                <button
-                    class="border px-4 h-[30px] text-xs text-[#353560] font-extrabold rounded-full shadow hover:bg-[#353560] hover:text-white transition-all duration-300">Recuperar
-                    contraseña</button>
-                <button
-                    class="border px-4 h-[30px] text-xs text-[#353560] font-extrabold rounded-full shadow hover:bg-[#353560] hover:text-white transition-all duration-300">Registrarse</button>
-            </div>
             <button
-                class="border h-[35px] px-3 mt-6 text-md font-bold rounded-full shadow bg-[#353560] text-white hover:bg-white hover:text-[#353560] transition-all duration-200">
+                class="border h-[35px] px-3 mt-3 text-md font-bold rounded-full shadow bg-[#353560] text-white hover:bg-white hover:text-[#353560] transition-all duration-200">
                 Iniciar sesion
             </button>
         </div>
     </form>
+
+    <div class="flex items-center justify-center gap-5 mt-4 w-[350px]">
+        <a href="{{ route('auth.forgot') }}"
+            class="border px-4 flex items-center h-[30px] text-xs text-[#353560] font-extrabold rounded-full shadow hover:bg-[#353560] hover:text-white transition-all duration-300">Recuperar
+            contraseña</a>
+        <a href="{{ route('auth.register') }}"
+            class="border px-4 flex items-center h-[30px] text-xs text-[#353560] font-extrabold rounded-full shadow hover:bg-[#353560] hover:text-white transition-all duration-300">Registrarse</a>
+    </div>
 @endsection
 
 @section('message')

@@ -7,6 +7,8 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>To-Do</title>
     @vite('resources/css/app.css')
+    @yield("block_files")
+    {{-- @vite('resources/js/app.js') --}}
 </head>
 
 <body

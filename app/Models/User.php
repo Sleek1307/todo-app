@@ -14,6 +14,11 @@ class User extends Authenticatable
     use HasApiTokens, HasFactory, Notifiable;
 
     /**
+     * @var string
+     */
+    protected $table = "users";
+
+    /**
      * The attributes that are mass assignable.
      *
      * @var array<int, string>
@@ -21,7 +26,7 @@ class User extends Authenticatable
     protected $fillable = [
         'name',
         'email',
-        'password', 
+        'password',
         'avatar_url'
     ];
 
@@ -45,11 +50,13 @@ class User extends Authenticatable
         'password' => 'hashed',
     ];
 
-    public function setPasswordAttribute($value) {
+    public function setPasswordAttribute($value)
+    {
         $this->attributes["password"] = Hash::make($value);
     }
 
-    public function tasks(){
+    public function tasks()
+    {
         return $this->hasMany(Task::class);
     }
 }
