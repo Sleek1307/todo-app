@@ -1,6 +1,7 @@
 <?php
 
 // use App\Http\Controllers\HomeController;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\RestoreController;
@@ -28,13 +29,15 @@ Route::prefix("auth")->group(function () {
 
     Route::get("/login",[LoginController::class, "show"]);
 
-    Route::post("/login", [LoginController::class, "login"]);
+    Route::post("/login", [LoginController::class, "login"])->name("auth.login");
 
     Route::get("/register", [RegisterController::class, "show"])->name("auth.register");
 
+    Route::post("/register", [RegisterController::class, "register"])->name("auth.register");
+
     Route::get("/forgot", [RestoreController::class, "show"])->name("auth.forgot");
 
-    Route::post("/forgot", [RestoreController::class, "sendRestoreEmail"])->name("auth.restore_email");
+    Route::post("/forgot", [RestoreController::class, "sendRestoreEmail"])->name("auth.forgot_email");
 
     // Route::post("/restorePassword", function () {
     //     return "Estas restaurando la contraseña";
@@ -44,6 +47,10 @@ Route::prefix("auth")->group(function () {
     //     return "Estas enviando el email de recuperacion";
     // });
 
+});
+
+Route::prefix("home")->group(function() {
+    Route::get("/todayTasks", HomeController::class)->name("todayTasks");
 });
 
 //? Tasks Routes

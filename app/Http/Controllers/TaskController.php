@@ -11,14 +11,14 @@ class TaskController extends Controller
     /**
      * Display a listing of the resource.
      */
-    /* public function index()
+    public function index()
     {
         $tasks_Pendiente = Task::where('status', '0')->orderBy('id', 'asc')->paginate();
         $tasks_Haciendo = Task::where('status', '1')->orderBy('id', 'asc')->paginate();
         $tasks_Terminado = Task::where('status', '2')->orderBy('id', 'asc')->paginate();
 
         return view('tasks.index', compact('tasks_Pendiente', 'tasks_Haciendo', 'tasks_Terminado'));
-    } */
+    }
 
     /**
      * Show the form for creating a new resource.
