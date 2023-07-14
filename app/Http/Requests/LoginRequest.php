@@ -12,7 +12,7 @@ class LoginRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -23,28 +23,29 @@ class LoginRequest extends FormRequest
     public function rules(): array
     {
         return [
-            "username" => "required",
+            "name" => "required",
             "password" => "required"
         ];
     }
 
     public function getCredentials()
     {
-        $username = $this->get("username");
-        if ($this->isEmail) {
+        $username = $this->get("name");
+
+        if ($this->isEmail($username)) {
             return [
                 "email" => $username,
                 "password" => $this->get("password")
             ];
         }
 
-        return $this->only("username", "password");
+        return $this->only("name", "password");
     }
 
     private function isEmail($param)
     {
         $factory = $this->container->make(ValidationFactory::class);
 
-        return !$factory->make(["username" => $param], ["username" => "email"])->fails();
+        return !$factory->make(["name" => $param], ["name" => "email"])->fails();
     }
 }
