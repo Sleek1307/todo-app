@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\RegisterRequest;
 use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 
 class RegisterController extends Controller
 {
@@ -17,15 +18,15 @@ class RegisterController extends Controller
 
         $user = User::create($request->validated());
 
-        $user = new User;
+        // $user = new User;
 
-        $user->name = $request->name;
-        $user->email = $request->email;
-        $user->passord = $request->password;
+        // $user->name = $request->name;
+        // $user->email = $request->email;
+        // $user->password = $request->password;
 
-        $user->save();
+        // $user->save();
 
-        auth()->login($user);
+        Auth::login($user);
 
         return redirect('/home')->with('success', "Usuario registrado exitosamente");
     }

@@ -2,12 +2,12 @@
 
 @section('form')
     <h1 class="text-4xl font-extrabold drop-shadow-md text-[#353560] pb-12">Inicio de sesion</h1>
-    <form action="{{ route('auth.login') }}">
+    <form action="{{ route('auth.login') }}" method="POST">
         @csrf
         <div class="flex flex-col items-center justify-center gap-2">
             <div class="flex flex-col items-start justify-center">
-                <label for="user_id" class="text-sm font-bold text-[#353560]">Email o Nombre de usuario</label>
-                <input name="user_id" id="user_id" type="text" placeholder="email@example.com"
+                <label for="name" class="text-sm font-bold text-[#353560]">Email o Nombre de usuario</label>
+                <input name="name" id="name" type="text" placeholder="email@example.com"
                     class="border rounded-md px-2 py-1 w-[300px]">
             </div>
             <div class="flex flex-col items-start justify-center">
@@ -29,6 +29,10 @@
         <a href="{{ route('auth.register') }}"
             class="border px-4 flex items-center h-[30px] text-xs text-[#353560] font-extrabold rounded-full shadow hover:bg-[#353560] hover:text-white transition-all duration-300">Registrarse</a>
     </div>
+
+    @if (count($errors) !== 0)
+        <p>{{ $errors }}</p>
+    @endif
 @endsection
 
 @section('message')

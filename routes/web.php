@@ -50,7 +50,7 @@ Route::prefix("auth")->group(function () {
 });
 
 Route::prefix("home")->group(function() {
-    Route::get("/todayTasks", HomeController::class)->name("todayTasks");
+    Route::get("/", HomeController::class)->name("home");
 });
 
 //? Tasks Routes
