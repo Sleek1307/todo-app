@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\UpdateTask;
 use App\Models\Task;
 use Illuminate\Http\Request;
 
@@ -57,15 +58,8 @@ class TaskController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Task $task)
+    public function update(UpdateTask $request, Task $task)
     {
-        $request->validate([
-            'task_title' => 'required',
-            'description' => 'required',
-            'status' => 'required',
-            'date' => 'required',
-        ]);
-
         $task->update($request->all());
 
         return redirect()->route('tasks.show', $task);
@@ -78,6 +72,6 @@ class TaskController extends Controller
     {
         $task->delete();
 
-        return redirect()->route('todayTasks');
+        return redirect()->route('home');
     }
 }

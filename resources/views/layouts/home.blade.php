@@ -77,6 +77,7 @@
                             </a>
                         </li>
                     </ul>
+                    </span>
                 </div>
             </div>
             {{-- ! FIN lateran nav bar --}}
