@@ -5,10 +5,10 @@
 
 /* elemento */
 .input-icon {
-    position: absolute  ;
-    top: 48%;
+    position: absolute;
+    top: 50%;
     left: 100%;
-    transform: translateX(-120%);
+    transform: translate(-120%, -50%);
 }
 
 .input-icon:hover{

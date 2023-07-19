@@ -1,0 +1,13 @@
+.tasks-state::-webkit-scrollbar {
+    width: 7px;
+}
+
+.tasks-state::-webkit-scrollbar-track {
+    background: whitesmoke;
+    border-radius: 5px;
+}
+
+.tasks-state::-webkit-scrollbar-thumb {
+    background-color: rgb(211, 211, 211);
+    border-radius: 20px;
+}
