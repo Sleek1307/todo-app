@@ -7,10 +7,10 @@
             <h2 class="mt-[-8px] px-5 pt-1 font-light text-sm text-gray-400">Martes 15 de Febrero</h2>
         </div>
 
-        <div class="flex flex-row overflow-hidden grow mb-3">
-            <div class="w-4/12 overflow-y-auto h-full border-r px-2 scroll-smooth ">
+        <div class="flex flex-row overflow-hidden gap-1 grow mb-3">
+            <div class="w-4/12 overflow-y-auto h-full px-2 scroll-smooth tasks-state">
                 <span class="text-xl text-white font-semibold">Pendiente</span>
-                <ul>
+                <ul id="tasksPorHacer" class="task-list">
                     @foreach ($tasks_Pendiente as $task)
                         <br>
                         <a href="{{ route('tasks.show', $task) }}">
@@ -25,9 +25,9 @@
                     @endforeach
                 </ul>
             </div>
-            <div class="w-4/12 overflow-y-auto h-full border-r px-2 scroll-smooth ">
+            <div class="w-4/12 overflow-y-auto h-full border-l px-2 scroll-smooth task-state">
                 <span class="text-xl text-white font-semibold">Haciendo</span>
-                <ul id="tasksHaciendo">
+                <ul id="tasksHaciendo" class="task-list">
                     @foreach ($tasks_Haciendo as $task)
                         <br>
                         <a href="{{ route('tasks.show', $task) }}">
@@ -42,7 +42,7 @@
                     @endforeach
                 </ul>
             </div>
-            <div class="w-4/12 overflow-y-auto h-full px-2 scroll-smooth ">
+            <div class="w-4/12 overflow-y-auto h-full px-2 border-l scroll-smooth task-state">
                 <span class="text-xl text-white font-semibold">Terminado</span>
                 <ul id="tasksTerminado">
                     @foreach ($tasks_Terminado as $task)

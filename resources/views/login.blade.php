@@ -1,26 +1,57 @@
 @extends('layouts.auth')
-
+@section('block_files')
+    ;
+    {{-- DOM manipulaition --}}
+    @vite('resources/js/register.js')
+    {{-- Styles --}}
+    @vite('resources/css/register.css')
+@endsection
 @section('form')
     <h1 class="text-4xl font-extrabold drop-shadow-md text-[#353560] pb-12">Inicio de sesion</h1>
-    <form action="{{ route('auth.login') }}">
+    <form action="{{ route('auth.login') }}" method="POST">
         @csrf
         <div class="flex flex-col items-center justify-center gap-2">
             <div class="flex flex-col items-start justify-center">
-                <label for="user_id" class="text-sm font-bold text-[#353560]">Email o Nombre de usuario</label>
-                <input name="user_id" id="user_id" type="text" placeholder="email@example.com"
-                    class="border rounded-md px-2 py-1 w-[300px]">
+                <label for="name" class="text-sm font-bold text-[#353560]">Email o Nombre de usuario</label>
+                <div class="input-wrapper">
+                    <img src="{{ asset('Svg/All/linear/user.svg') }}" alt="name" class="input-icon">
+                    <input name="name_or_email" id="name" type="text" placeholder="email@example.com"
+                        class="border rounded-md px-2 py-1 w-[300px]">
+                </div>
+                @error('name_or_email')
+                    <div class="w-100">
+                        <p class=" text-sm font-bold text-red-800">{{ $message }}</p>
+                    </div>
+                @enderror
             </div>
             <div class="flex flex-col items-start justify-center">
                 <label for="password" class="text-sm font-bold text-[#353560]">Contraseña</label>
-                <input name="password" id="password" type="text" placeholder="your password"
-                    class="border rounded-md px-2 py-1 w-[300px]">
+                <div class="input-wrapper">
+                    <img src="{{ asset('Svg/All/linear/eye-slash.svg') }}" alt="password" class="input-icon"
+                        id="password_icon">
+                    <input name="password" id="password" type="password" placeholder="Ingresa tu contraseña"
+                        class="border rounded-md px-2 py-1 w-[300px]">
+                </div>
+                @error('password')
+                    <div class="w-[300px]">
+                        <p class=" text-sm font-bold text-red-800 break-words">{{ $message }}</p>
+                    </div>
+                @enderror
             </div>
+
+            @error('0')
+            <p class="text-sm font-bold text-red-800">{{ $message }}</p>
+            @enderror
+
+            
             <button
                 class="border h-[35px] px-3 mt-3 text-md font-bold rounded-full shadow bg-[#353560] text-white hover:bg-white hover:text-[#353560] transition-all duration-200">
                 Iniciar sesion
             </button>
         </div>
     </form>
+
+
 
     <div class="flex items-center justify-center gap-5 mt-4 w-[350px]">
         <a href="{{ route('auth.forgot') }}"

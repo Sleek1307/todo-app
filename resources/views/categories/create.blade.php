@@ -3,7 +3,7 @@
 @section('content')
     <div class="h-full aspect-auto flex grow flex-col px-1 m-2 text-white">
         {{-- * ================================================ boton de volver ================================================ --}}
-        <a href="{{ route('todayTasks') }}" class="flex mb-5">
+        <a href="{{ route('home') }}" class="flex mb-5">
             <img src="{{ asset('Svg/All/linear/arrow-left-2.svg') }}" alt="">
             <span class="px-2">volver</span>
         </a>

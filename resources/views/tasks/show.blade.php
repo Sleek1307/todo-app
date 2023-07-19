@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="grow m-2 h-full aspect-auto">
-        <a href="{{ route('todayTasks') }}" class="flex mb-5 text-white">
+        <a href="{{ route('home') }}" class="flex mb-5 text-white">
             <img src="{{ asset('Svg/All/linear/arrow-left-2.svg') }}" alt="">
             <span class="px-2">volver</span>
         </a>
