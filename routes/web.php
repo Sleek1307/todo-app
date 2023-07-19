@@ -7,6 +7,7 @@ use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\RestoreController;
 use App\Http\Controllers\TaskController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\CategoryController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -70,3 +71,6 @@ Route::prefix("home")->group(function() {
  */
 
 Route::resource('tasks', TaskController::class);
+
+//? Categorys Routes
+Route::resource('categories', CategoryController::class);
