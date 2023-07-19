@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\UpdateTask;
+use App\Models\Category;
 use App\Models\Task;
 use Illuminate\Http\Request;
 
@@ -44,7 +45,9 @@ class TaskController extends Controller
      */
     public function show(Task $task)
     {
-        return view('tasks.show', compact('task'));
+        $categories = Category::orderBy('created_at', 'desc')->paginate(3);
+
+        return view('tasks.show', compact('task', 'categories'));
     }
 
     /**
@@ -52,7 +55,9 @@ class TaskController extends Controller
      */
     public function edit(Task $task)
     {
-        return view('tasks.edit', compact('task'));
+        $categories = Category::orderBy('created_at', 'desc')->paginate(3);
+
+        return view('tasks.edit', compact('task', 'categories'));
     }
 
     /**
@@ -72,6 +77,6 @@ class TaskController extends Controller
     {
         $task->delete();
 
-        return redirect()->route('home');
+        return redirect()->route('todayTasks');
     }
 }
