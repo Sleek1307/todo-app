@@ -1,5 +1,9 @@
 @extends('layouts.main')
 
+@section('block_files')
+    @vite('resources/css/todayTasks.css')
+@endsection
+
 @section('main_content')
     <div class="h-5/6 w-11/12 flex items-center justify-center">
         <div class="flex justify-start items-start h-full w-full bg-transparent rounded-3xl border">

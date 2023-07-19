@@ -23,14 +23,14 @@ class LoginRequest extends FormRequest
     public function rules(): array
     {
         return [
-            "name" => "required",
+            "name_or_email" => "required",
             "password" => "required"
         ];
     }
 
     public function getCredentials()
     {
-        $username = $this->get("name");
+        $username = $this->get("name_or_email");
 
         if ($this->isEmail($username)) {
             return [
@@ -39,13 +39,13 @@ class LoginRequest extends FormRequest
             ];
         }
 
-        return $this->only("name", "password");
+        return ["name" => $this->get("name_or_email"), "password" => $this->get("password")];
     }
 
     private function isEmail($param)
     {
         $factory = $this->container->make(ValidationFactory::class);
 
-        return !$factory->make(["name" => $param], ["name" => "email"])->fails();
+        return !$factory->make(["name_or_email" => $param], ["name_or_email" => "email"])->fails();
     }
 }

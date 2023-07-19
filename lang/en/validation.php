@@ -163,9 +163,24 @@ return [
     */
 
     'custom' => [
-        'attribute-name' => [
-            'rule-name' => 'custom-message',
+        "name" => [
+            "required" => "El campo es requerido"
         ],
+        'name_or_email' => [
+            "required" => "El campo es requerido"
+        ],
+        'email' => [
+            'email' => 'El formato del campo debe ser email',
+            'required' => 'El campo es requerido'
+        ],
+        'password' => [
+            'required' => 'El campo es requerido',
+            'min' => "La contraseña debe tener como minimo 8 caracteres",
+        ],
+        "password_confirmation" => [
+            "required" => "El campo es obligatorio",
+            "same" => "Las contraseñas no coinciden"
+        ]
     ],
 
     /*
