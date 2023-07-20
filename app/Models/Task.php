@@ -10,6 +10,13 @@ class Task extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'task_title',
+        'description',
+        'status',
+        'date'
+    ];
+
     public function categories(): BelongsToMany
     {
         return $this->belongsToMany(Role::class)->using(CategoryTask::class);

@@ -16,8 +16,10 @@ class CategoryFactory extends Factory
      */
     public function definition(): array
     {
+        $arreglo_color = ['#05FF1F', '#FF0202', '#05DBFF', '#1402FF', '#FF05DB', '#FFFF02'];
         return [
-            'category_name' => fake()->name(),
+            'category_name' => fake()->word(),
+            'color' => fake()->safeHexColor(),
         ];
     }
 }

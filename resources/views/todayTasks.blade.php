@@ -63,13 +63,4 @@
         {{-- </div> --}}
     </div>
 
-    @push('js')
-        <script src="https://cdn.jsdelivr.net/npm/sortablejs@latest/Sortable.min.js"></script>
-        <script>
-            new Sortable(tasksTerminado, {
-                animation: 150,
-                ghostClass: 'bg-blue-100'
-            });
-        </script>
-    @endpush
 @endsection
