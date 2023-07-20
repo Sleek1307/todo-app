@@ -7,8 +7,8 @@
     @vite('resources/css/register.css')
 @endsection
 @section('form')
-    <h1 class="text-4xl font-extrabold drop-shadow-md text-[#353560] pb-12">Crear cuenta</h1>
-    <form action="{{ route('auth.register') }}" method="POST">
+    <h1 class="text-4xl font-extrabold drop-shadow-md text-[#353560]">Crear cuenta</h1>
+    <form action="{{ route('auth.register') }}" method="POST" class="mb-0">
         @csrf
         <div class="flex flex-col items-center justify-center gap-2">
             <div class="flex flex-col items-start justify-center input-wrapper">
@@ -71,6 +71,14 @@
             </button>
         </div>
     </form>
+
+    <div class="flex items-center justify-center gap-5 mt-4 w-[350px]">
+        <a href="{{ route('auth.forgot') }}"
+            class="border px-4 flex items-center h-[30px] text-xs text-[#353560] font-extrabold rounded-full shadow hover:bg-[#353560] hover:text-white transition-all duration-300">Recuperar
+            contraseña</a>
+        <a href="{{ route('auth.login') }}"
+            class="border px-4 flex items-center h-[30px] text-xs text-[#353560] font-extrabold rounded-full shadow hover:bg-[#353560] hover:text-white transition-all duration-300">Iniciar sesion</a>
+    </div>
 @endsection
 
 @section('message')

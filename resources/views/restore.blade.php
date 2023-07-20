@@ -1,6 +1,7 @@
 @extends('layouts.auth')
 @section('form')
-    <h1 class="text-4xl font-extrabold drop-shadow-md text-[#353560] pb-12">Restaurar contraseña</h1>
+    <h1 class="text-4xl font-extrabold drop-shadow-md text-[#353560] pb-12 whitespace-pre-line">Restaurar
+        contraseña</h1>
     <form action="">
         <div class="flex flex-col items-center justify-center gap-2">
             <div class="flex flex-col items-start justify-center">
@@ -9,8 +10,9 @@
                     class="border rounded-md px-2 py-1 w-[300px]">
             </div>
             <div class="flex items-center justify-start gap-5 w-[300px]">
-                <button
-                    class="border px-4 h-[30px] text-xs text-[#353560] font-extrabold rounded-full shadow hover:bg-[#353560] hover:text-white transition-all duration-300">Volver a iniciar sesion</button>
+                <a href="{{ route('auth.login') }}"
+                    class="border px-4 flex items-center h-[30px] text-xs text-[#353560] font-extrabold rounded-full shadow hover:bg-[#353560] hover:text-white transition-all duration-300">Volver
+                    a iniciar sesion</a>
             </div>
             <button
                 class="border h-[35px] px-3 mt-6 text-md font-bold rounded-full shadow bg-[#353560] text-white hover:bg-white hover:text-[#353560] transition-all duration-200">
