@@ -27,7 +27,8 @@ class TaskController extends Controller
      */
     public function create()
     {
-        return view('tasks.create');
+        $categories = Category::orderBy('created_at', 'desc')->paginate(3);
+        return view("tasks.create", compact("categories"));
     }
 
     /**

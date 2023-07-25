@@ -34,7 +34,7 @@
                         </li>
                         <li class="text-gray-500 font-bold">
                             <div class="pl-5 w-100 hover:bg-gray-200 focus:bg-gray-300 rounded-md">
-                                <a rel="noopener noreferrer" href="#" class="flex items-center p-2 space-x-3">
+                                <a rel="noopener noreferrer" href="{{route('categories.index')}}" class="flex items-center p-2 space-x-3">
                                     <img src="{{ asset('Svg/All/linear/clipboard-text.svg') }}" alt="Categorias">
                                     <span>Categorias</span>
                                 </a>
