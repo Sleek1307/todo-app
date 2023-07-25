@@ -42,7 +42,6 @@
             @error('0')
             <p class="text-sm font-bold text-red-800">{{ $message }}</p>
             @enderror
-
             
             <button
                 class="border h-[35px] px-3 mt-3 text-md font-bold rounded-full shadow bg-[#353560] text-white hover:bg-white hover:text-[#353560] transition-all duration-200">

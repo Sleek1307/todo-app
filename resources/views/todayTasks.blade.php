@@ -7,8 +7,8 @@
             <h2 class="mt-[-8px] px-5 pt-1 font-light text-sm text-gray-400">Martes 15 de Febrero</h2>
         </div>
 
-        <div class="flex flex-row overflow-hidden gap-1 grow mb-3">
-            <div class="w-4/12 overflow-y-auto h-full px-2 scroll-smooth tasks-state">
+        <div class="relative flex flex-row overflow-hidden gap-1 grow mb-3">
+            <div class="w-4/12 overflow-y-auto h-full px-2 scroll-smooth tasks-state py-3">
                 <span class="text-xl text-white font-semibold">Pendiente</span>
                 <ul id="tasksPorHacer" class="task-list">
                     @foreach ($tasks_Pendiente as $task)
@@ -25,7 +25,7 @@
                     @endforeach
                 </ul>
             </div>
-            <div class="w-4/12 overflow-y-auto h-full border-l px-2 scroll-smooth task-state">
+            <div class="w-4/12 overflow-y-auto h-full border-l px-2 scroll-smooth task-state py-3">
                 <span class="text-xl text-white font-semibold">Haciendo</span>
                 <ul id="tasksHaciendo" class="task-list">
                     @foreach ($tasks_Haciendo as $task)
@@ -42,7 +42,7 @@
                     @endforeach
                 </ul>
             </div>
-            <div class="w-4/12 overflow-y-auto h-full px-2 border-l scroll-smooth task-state">
+            <div class="w-4/12 overflow-y-auto h-full px-2 border-l scroll-smooth task-state py-3">
                 <span class="text-xl text-white font-semibold">Terminado</span>
                 <ul id="tasksTerminado">
                     @foreach ($tasks_Terminado as $task)
@@ -59,8 +59,13 @@
                     @endforeach
                 </ul>
             </div>
+
+            <a href="{{ route('tasks.create') }}"
+                class="absolute bottom-0 right-0 bg-white text-sm font-bold px-3 py-1 mb-3 mr-4 rounded-full">
+                Agregar tarea
+            </a>
         </div>
+
         {{-- </div> --}}
     </div>
-
 @endsection

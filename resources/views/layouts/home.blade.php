@@ -8,7 +8,7 @@
     <div class="h-5/6 w-11/12 flex items-center justify-center">
         <div class="flex justify-start items-start h-full w-full bg-transparent rounded-3xl border">
             {{-- * INICIO lateral nav bar --}}
-            <div class="h-full w-60  p-3 bg-gray-100 text-gray-900 rounded-l-3xl">
+            <div class="h-full w-[200px] p-3 dark:bg-gray-100 dark:text-gray-900 rounded-l-3xl">
                 <div class="flex items-center p-2 space-x-4 border-b border-gray-500">
                     <img src="https://source.unsplash.com/100x100/?portrait" alt=""
                         class="w-12 h-12 rounded-full bg-gray-700">
@@ -22,19 +22,24 @@
                 </div>
                 <div class="divide-y divide-gray-700">
                     <ul class="pt-2 pb-4 space-y-1 text-sm">
-                        <li class="hover:bg-gray-200 focus:bg-gray-300 text-gray-500 font-bold pl-5">
-                            <a rel="noopener noreferrer" href="{{ route('home') }}"
-                                class="flex items-center p-2 space-x-3 rounded-md">
-                                <img src="{{ asset('Svg/All/linear/home.svg') }}" alt="">
-                                <span>Inicio</span>
-                            </a>
+                        <li class=" text-gray-500 font-bold ">
+                            <div class="pl-5 w-100 hover:bg-gray-200 focus:bg-gray-300">
+                                <a rel="noopener noreferrer" href="{{route('home')}}"
+                                    class="flex items-center p-2 space-x-3 rounded-md">
+                                    <img src="{{ asset('Svg/All/linear/home.svg') }}" alt="">
+                                    <span>Inicio</span>
+                                </a>
+                            </div>
+
                         </li>
-                        <li class="pl-5">
-                            <a rel="noopener noreferrer" href="{{ route('categories.index') }}"
-                                class="flex items-center p-2 space-x-3 rounded-md hover:bg-gray-200 text-gray-500 font-bold">
-                                <img src="{{ asset('Svg/All/linear/clipboard-text.svg') }}" alt="Categorias">
-                                <span>Categorias</span>
-                            </a>
+                        <li class="text-gray-500 font-bold">
+                            <div class="pl-5 w-100 hover:bg-gray-200 focus:bg-gray-300 rounded-md">
+                                <a rel="noopener noreferrer" href="{{route('categories.index')}}" class="flex items-center p-2 space-x-3">
+                                    <img src="{{ asset('Svg/All/linear/clipboard-text.svg') }}" alt="Categorias">
+                                    <span>Categorias</span>
+                                </a>
+                            </div>
+
                             {{-- * INICIO Categorias --}}
                             <ul class="pb-2 text-[10px] grid grid-cols-4">
 
@@ -61,11 +66,15 @@
                             </ul>
                             {{-- ! FIN Categorias --}}
                         </li>
-                        <li class="hover:bg-gray-200 text-gray-500 font-bold pl-5">
-                            <a rel="noopener noreferrer" href="#" class="flex items-center p-2 space-x-3 rounded-md">
-                                <img src="{{ asset('Svg/All/linear/calendar-1.svg') }}" alt="Calendario">
-                                <span>Calendario</span>
-                            </a>
+                        <li class="text-gray-500 font-bold">
+                            <div class="w-100 hover:bg-gray-200 focus:bg-gray-300 pl-5">
+                                <a rel="noopener noreferrer" href="{{route('home.calendar')}}"
+                                    class="flex items-center p-2 space-x-3 rounded-md">
+                                    <img src="{{ asset('Svg/All/linear/calendar-1.svg') }}" alt="Calendario">
+                                    <span>Calendario</span>
+                                </a>
+                            </div>
+
                         </li>
                         <li class="hover:bg-gray-200 text-gray-500 font-bold pl-5">
                             <a rel="noopener noreferrer" href="#" class="flex items-center p-2 space-x-3 rounded-md">
