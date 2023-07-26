@@ -14,7 +14,7 @@
             <div
                 class="flex flex-col justify-center items-center bg-white rounded-lg drop-shadow-lg text-black w-4/12 py-5">
                 <p class="mb-1 text-lg text-center font-bold whitespace-pre-line">Crear tarea</p>
-                <form action="{{ route('categories.store') }}" method="POST" class="flex flex-col items-start">
+                <form action="{{ route('tasks.store') }}" method="POST" class="flex flex-col items-start">
                     @csrf
                     <div class="flex-1 flex flex-col justify-center items-center">
 
@@ -44,9 +44,9 @@
                         <div class="flex flex-col w-full"><label for="description">
                                 Fecha:
                             </label>
-                            <input type="date" id="task_title" name="task_title" value="{{ old('task_title') }}"
+                            <input type="date" id="task_title" name="task_title" value="{{ old('date') }}"
                             class="border rounded-md py-1 px-1 w-full">
-                            @error('description')
+                            @error('date')
                                 <div class="w-full">
                                     <p class=" text-sm font-bold text-red-800">{{ $message }}</p>
                                 </div>

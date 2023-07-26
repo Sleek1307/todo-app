@@ -10,23 +10,11 @@ use App\Http\Controllers\TaskController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CategoryController;
 use Illuminate\Support\Facades\Route;
-
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider and all of them will
-| be assigned to the "web" middleware group. Make something great!
-|
-*/
  
 Route::get('/',function () {
     return redirect("/auth/login");
 });
 
-//? Autentification Routes
 Route::prefix("auth")->group(function () {
 
     Route::get("/login",[LoginController::class, "show"]);
@@ -56,7 +44,6 @@ Route::prefix("home")->group(function() {
     Route::get("/calendar", CalendarController::class)->name("home.calendar");
 });
 
-//? Tasks Routes
  Route::controller(TaskController::class)->group(function(){
     Route::get('tasks/create', 'create')->name('tasks.create');
 
@@ -70,7 +57,6 @@ Route::prefix("home")->group(function() {
 
     Route::get('tasks/{task}', 'destroy')->name('tasks.destroy');
 });
-
 
 Route::resource('tasks', TaskController::class);
 
