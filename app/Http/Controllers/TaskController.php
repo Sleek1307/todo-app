@@ -3,10 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\StoreTask;
 use App\Http\Requests\UpdateTask;
 use App\Models\Category;
 use App\Models\Task;
-use Illuminate\Http\Request;
 
 class TaskController extends Controller
 {
@@ -34,11 +34,17 @@ class TaskController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(StoreTask $request)
     {
+
+
+
+        $request->merge(["category_id"=>intval($request->input("category_id"))]);
+
+
         $task = Task::create($request->all());
 
-        return redirect()->route('tasks.show');
+        return redirect()->route('home');
     }
 
     /**
@@ -78,6 +84,6 @@ class TaskController extends Controller
     {
         $task->delete();
 
-        return redirect()->route('todayTasks');
+        return redirect()->route('home');
     }
 }

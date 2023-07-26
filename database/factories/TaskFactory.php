@@ -21,13 +21,14 @@ class TaskFactory extends Factory
      */
     public function definition(): array
     {
-        $arreglo = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20];
+        $arreglo = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20];
         return [
             'task_title' => $this->faker->sentence(),
             'description' => $this->faker->paragraph(),
             'status' => $this->faker->randomElement(['0', '1', '2']),
             'date' => $this->faker->date(),
             'user_id' => $this->faker->randomElement($arreglo),
+            'category_id' => $this->faker->randomElement($arreglo),
         ];
     }
 }
