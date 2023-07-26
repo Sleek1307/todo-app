@@ -4,7 +4,6 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 class Task extends Model
 {
@@ -14,11 +13,12 @@ class Task extends Model
         'task_title',
         'description',
         'status',
-        'date'
+        'date',
+        'category_id'
     ];
 
-    public function categories(): BelongsToMany
+    public function category()
     {
-        return $this->belongsToMany(Role::class)->using(CategoryTask::class);
+        return $this->belongsTo('App\Models\Category');
     }
 }
