@@ -1,7 +1,7 @@
 @extends('layouts.home')
 
 @section('content')
-    <div class="h-full aspect-auto flex grow flex-col px-1">
+    <div class="h-full w-9/12 flex grow flex-col px-1">
         <div class="flex flex-col">
             <h1 class="pt-1 px-5 text-2xl text-white font-bold">Estas son tus tareas de hoy</h1>
             <h2 class="mt-[-8px] px-5 pt-1 font-light text-sm text-gray-400">Martes 15 de Febrero</h2>

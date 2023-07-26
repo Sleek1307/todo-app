@@ -11,14 +11,18 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('category_tasks', function (Blueprint $table) {
+        Schema::create('tasks', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger("category_id")->unique();
-            $table->unsignedBigInteger("task_id")->unique();
+            $table->string("task_title", 255);
+            $table->string("description", 255);
+            $table->string("status", 45)->default(0);
+            $table->date("date");
+            $table->unsignedBigInteger("user_id");
+            $table->unsignedBigInteger("category_id");
             $table->timestamps();
 
+            $table->foreign("user_id")->references("id")->on("users")->onDelete("cascade")->onUpdate("cascade");
             $table->foreign("category_id")->references("id")->on("categories")->onDelete("cascade")->onUpdate("cascade");
-            $table->foreign("task_id")->references("id")->on("tasks")->onDelete("cascade")->onUpdate("cascade");
         });
     }
 
@@ -27,6 +31,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('category_tasks');
+        Schema::dropIfExists('tasks');
     }
 };
