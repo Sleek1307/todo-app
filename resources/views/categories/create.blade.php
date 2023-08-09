@@ -13,12 +13,12 @@
 
             <div
                 class="flex flex-col justify-center items-center bg-white rounded-lg drop-shadow-lg text-black w-4/12 h-[400px]">
-                <p class="mb-1 text-lg text-center font-bold whitespace-pre-line">Nueva categoria</p>
+                <h2 class="text-4xl font-extrabold drop-shadow-md text-[#353560] mb-4">Nueva categoria</h2>
                 <form action="{{ route('categories.store') }}" method="POST" class="flex flex-col items-start">
                     @csrf
                     <div class="flex-1 flex flex-col justify-center items-center">
 
-                        <div class="flex flex-col w-full"><label for="category_name">
+                        <div class="flex flex-col w-full"><label for="category_name" class="font-bold">
                                 Nombre:
                             </label>
                             <input type="text" id="category_name" name="category_name" value="{{ old('category_name') }}"
@@ -31,21 +31,24 @@
                         </div for="">
 
                         <div class="flex flex-col w-full">
-                            <label for="color">
-                                Elige un color para tu categoria:
-                            </label>
-                            <input id="color" type="color" name="color" value="{{ old('color') }}"
-                                class="p-1 rounded h-[50px] w-full">
+                            <label for="color" class="font-bold">Color de la categoria</label>
+                            <div class="flex items-center gap-3 border justify-between rounded-md p-1">
+                                <label for="color" class="ml-2">Selecciona un color</label>
+                                <input type="color" id="color" name="color" value="{{ old('color') }}"
+                                    class="text-black p-1">
+                            </div>
+                            @error('color')
+                                <div class="w-full">
+                                    <p class=" text-sm font-bold text-red-800">{{ $message }}</p>
+                                </div>
+                            @enderror
                         </div>
 
-
-                        @error('color')
-                            <small>*{{ $message }}. {{ old('color') }}</small>
-                        @enderror
-
                         <br>
-                        <button type="submit" class="border border-blue-300 p-2 rounded-xl text-blue-300 bg-blue-600">Crear
-                            categoria</button>
+                        <button type="submit"
+                            class="border border-[#353560] p-2 rounded-xl bg-white cursor-pointer hover:border-[#353560] hover:shadow-lg hover:bg-[#353560] hover:text-white">Crear
+                            categoria
+                        </button>
                     </div>
 
                 </form>

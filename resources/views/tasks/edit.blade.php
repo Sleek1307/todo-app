@@ -11,11 +11,11 @@
 
         <div class="flex flex-1 flex-col items-center justify-center">
             <div class="flex flex-col justify-center items-center bg-white rounded-lg drop-shadow-lg text-black w-4/12 py-5">
-                <p class="text-4xl font-extrabold drop-shadow-md text-[#353560]">Editar tarea</p>
+                <h2 class="text-4xl font-extrabold drop-shadow-md text-[#353560]">Editar tarea</h2>
                 <form action="{{ route('tasks.update', $task) }}" method="POST" class="flex flex-col items-start">
                     @csrf
-                    @method("put")
-                    <div class="flex-1 flex flex-col justify-center items-center scroll">
+                    @method('put')
+                    <div class="flex-1 flex flex-col justify-center items-center scroll gap-2">
                         <div class="flex flex-col w-full">
                             <label for="task_title" class="font-bold">
                                 Titulo:
@@ -65,9 +65,7 @@
                             </label>
 
                             <select name="category_id" id="category_id"
-                                class="border rounded-md p-1 focus:outline-0 focus:border-[#353560] focus:shadow-md"
-                                
-                                >
+                                class="border rounded-md p-1 focus:outline-0 focus:border-[#353560] focus:shadow-md">
                                 @foreach ($categories as $category)
                                     <option value="{{ $category->id }}">
                                         {{ $category->category_name }}</option>
@@ -80,18 +78,22 @@
                             @enderror
                         </div>
 
-                        <br>
-                        <button type="submit"
-                            class="border border-[#353560] p-2 rounded-xl bg-white cursor-pointer hover:border-[#353560] hover:shadow-lg hover:bg-[#353560]hover:text-white">Editar
-                            tarea</button>
+                        <div class="w-full justify-start">
+                            <button type="submit"
+                                class="border border-[#353560] p-2 rounded-xl bg-white cursor-pointer hover:border-[#353560] hover:shadow-lg hover:bg-[#353560]hover:text-white">Editar
+                                tarea</button>
+                        </div>
+
                     </div>
                 </form>
-                <form action="{{route('tasks.destroy', $task)}}" method="POST">
+                <form action="{{ route('tasks.destroy', $task) }}" method="POST">
                     @csrf
-                    @method("delete")
-                    <button type="submit" class="border absolute bottom-5 left-6 border-[#353560] p-2 rounded-xl bg-white cursor-pointer hover:border-[#353560] hover:shadow-lg hover:bg-[#353560]hover:text-white">Eliminar</button>
+                    @method('delete')
+                    <button type="submit"
+                        class="border absolute bottom-5 right-10 border-[#353560] p-2 rounded-xl bg-white cursor-pointer hover:border-[#353560] hover:shadow-lg">
+                        <img src="{{ asset('Svg/All/linear/trash.svg') }}" width="24px"/>
+                    </button>
                 </form>
-                <button></button>
             </div>
         </div>
 

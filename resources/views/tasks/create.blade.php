@@ -1,7 +1,7 @@
 @extends('layouts.nav')
 
 @section('content')
-    <div class="h-full aspect-auto flex grow px-1 text-white">
+    <div class="h-full aspect-auto flex grow px-1 m-2 text-white">
         {{-- * ================================================ boton de volver ================================================ --}}
         <a href="{{ route('home') }}" class="flex absolute items-center mt-3 ml-3">
             <img src="{{ asset('Svg/All/linear/arrow-left-2.svg') }}" alt="">

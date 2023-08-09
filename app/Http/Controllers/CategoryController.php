@@ -78,6 +78,6 @@ class categoryController extends Controller
     {
         $category->delete();
 
-        return redirect()->route('homes');
+        return redirect()->route('home');
     }
 }

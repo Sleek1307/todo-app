@@ -45,7 +45,7 @@
 
                                 @foreach ($categories as $category)
                                     <li class="col-start-2 col-span-3">
-                                        <a rel="noopener noreferrer" href="{{route('categories.show', $category)}}"
+                                        <a rel="noopener noreferrer" href="{{route('categories.edit', $category)}}"
                                             class="flex items-center p-2 space-x-3 rounded-md hover:bg-gray-200 text-gray-500 font-semibold ">
                                             <svg width="12" height="12">
                                                 <circle cx="6" cy="6" r="6" fill="{{$category->color}}" />
