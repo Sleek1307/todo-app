@@ -16,7 +16,7 @@
                 <div class="input-wrapper">
                     <img src="{{ asset('Svg/All/linear/user.svg') }}" alt="name" class="input-icon">
                     <input name="name_or_email" id="name" type="text" placeholder="email@example.com"
-                        class="border rounded-md px-2 py-1 w-[300px]">
+                        class="border rounded-md px-2 py-1 w-[300px] focus:outline-0">
                 </div>
                 @error('name_or_email')
                     <div class="w-100">
@@ -30,7 +30,7 @@
                     <img src="{{ asset('Svg/All/linear/eye-slash.svg') }}" alt="password" class="input-icon"
                         id="password_icon">
                     <input name="password" id="password" type="password" placeholder="Ingresa tu contraseña"
-                        class="border rounded-md px-2 py-1 w-[300px]">
+                        class="border rounded-md px-2 py-1 w-[300px] focus:outline-0 focus:border-[#353560] focus:shadow-md">
                 </div>
                 @error('password')
                     <div class="w-[300px]">

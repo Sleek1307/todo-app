@@ -1,4 +1,4 @@
-@extends('layouts.home')
+@extends('layouts.nav')
 
 @section('content')
     <div class="grow m-2 h-full aspect-auto">
@@ -32,7 +32,7 @@
                 <form action="{{ route('tasks.destroy', $task) }}" method="POST">
                     @csrf
                     @method('delete')
-                    <button type="submit" class="mx-5 border-2 border-gray-600 rounded-lg p-1 bg-gray-400"">Eliminar</a>
+                    <button type="submit" class="mx-5 border-2 border-gray-600 rounded-lg p-1 bg-gray-400">Eliminar</a>
                 </form>
             </div>
         </div>

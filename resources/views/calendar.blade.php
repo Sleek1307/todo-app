@@ -1,4 +1,4 @@
-@extends('layouts.home')
+@extends('layouts.nav')
 
 @section('content')
     <div class="flex grow">

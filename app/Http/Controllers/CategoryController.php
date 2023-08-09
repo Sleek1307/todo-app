@@ -38,7 +38,7 @@ class categoryController extends Controller
     {
         $category = Category::create($request->all());
 
-        return redirect()->route('todayTasks');
+        return redirect()->route('home');
     }
 
     /**
@@ -68,7 +68,7 @@ class categoryController extends Controller
     {
         $category->update($request->all());
 
-        return redirect()->route('categories.show', $category);
+        return redirect()->route("categories.index");
     }
 
     /**
@@ -78,6 +78,6 @@ class categoryController extends Controller
     {
         $category->delete();
 
-        return redirect()->route('todayTasks');
+        return redirect()->route('home');
     }
 }

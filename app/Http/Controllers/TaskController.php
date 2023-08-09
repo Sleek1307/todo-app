@@ -36,11 +36,7 @@ class TaskController extends Controller
      */
     public function store(StoreTask $request)
     {
-
-
-
-        $request->merge(["category_id"=>intval($request->input("category_id"))]);
-
+        $request->merge(["category_id"=>intval($request->input("category_id")), "user_id"=>auth()->user()->getAuthIdentifier()]);
 
         $task = Task::create($request->all());
 
@@ -72,9 +68,11 @@ class TaskController extends Controller
      */
     public function update(UpdateTask $request, Task $task)
     {
+
+        var_dump(request()->all());
         $task->update($request->all());
 
-        return redirect()->route('tasks.show', $task);
+        return redirect()->route('home');
     }
 
     /**

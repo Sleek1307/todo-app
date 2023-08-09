@@ -1,65 +1,101 @@
-@extends('layouts.home')
+@extends('layouts.nav')
 
 @section('content')
     <div class="h-full aspect-auto flex grow flex-col px-1 m-2 text-white">
         {{-- * ================================================ boton de volver ================================================ --}}
-        <a href="{{ route('tasks.show', $task) }}" class="flex mb-5">
+        <a href="{{ route('home') }}" class="flex absolute items-center mt-3 ml-3">
             <img src="{{ asset('Svg/All/linear/arrow-left-2.svg') }}" alt="">
-            <span class="px-2">volver</span>
+            <span class="px-2 font-bold">volver</span>
         </a>
         {{-- * ================================================================================================================= --}}
 
-        <div class="flex overflow-hidden p-3 justify-center text-white">
-            <span>Aqui podras modificar la tarea <span class="font-bold">{{ $task->task_title }}</span> </span>
+        <div class="flex flex-1 flex-col items-center justify-center">
+            <div class="flex flex-col justify-center items-center bg-white rounded-lg drop-shadow-lg text-black w-4/12 py-5">
+                <h2 class="text-4xl font-extrabold drop-shadow-md text-[#353560]">Editar tarea</h2>
+                <form action="{{ route('tasks.update', $task) }}" method="POST" class="flex flex-col items-start">
+                    @csrf
+                    @method('put')
+                    <div class="flex-1 flex flex-col justify-center items-center scroll gap-2">
+                        <div class="flex flex-col w-full">
+                            <label for="task_title" class="font-bold">
+                                Titulo:
+                            </label>
+                            <input type="text" id="task_title" name="task_title"
+                                value="{{ old('task_title', $task->task_title) }}"
+                                class="border rounded-md py-1 px-1 w-full focus:outline-0 focus:border-[#353560] focus:shadow-md">
+
+                            @error('task_title')
+                                <div class="w-full">
+                                    <p class=" text-sm font-bold text-red-800">{{ $message }}</p>
+                                </div>
+                            @enderror
+                        </div for="">
+
+                        <div class="flex flex-col w-full">
+                            <label for="description" class="font-bold">
+                                Descripcion:
+                            </label>
+                            <textarea class="border rounded-md py-1 px-1 w-full scrollbar focus:outline-0 focus:border-[#353560] focus:shadow-md"
+                                name="description" id="description" cols="30" rows="5">{{ old('description', $task->description) }}</textarea>
+                            @error('description')
+                                <div class="w-full">
+                                    <p class=" text-sm font-bold text-red-800">{{ $message }}</p>
+                                </div>
+                            @enderror
+                        </div for="">
+
+                        <div class="flex flex-col w-full">
+                            <label for="date" class="font-bold">
+                                Fecha:
+                            </label>
+                            <input type="date" id="date" name="date" value="{{ old('date', $task->date) }}"
+                                class="border rounded-md py-1 px-1 w-full focus:outline-0 focus:border-[#353560] focus:shadow-md">
+                            @error('date')
+                                <div class="w-full">
+                                    <p class=" text-sm font-bold text-red-800 ">{{ $message }}
+                                        <span>{{ old('category_id') }}</span>
+                                    </p>
+                                </div>
+                            @enderror
+                        </div for="">
+
+                        <div class="flex flex-col w-full">
+                            <label for="category" class="font-bold">
+                                Categoria:
+                            </label>
+
+                            <select name="category_id" id="category_id"
+                                class="border rounded-md p-1 focus:outline-0 focus:border-[#353560] focus:shadow-md">
+                                @foreach ($categories as $category)
+                                    <option value="{{ $category->id }}">
+                                        {{ $category->category_name }}</option>
+                                @endforeach
+                            </select>
+                            @error('category_id')
+                                <div class="w-full">
+                                    <p class=" text-sm font-bold text-red-800">{{ $message }} </p>
+                                </div>
+                            @enderror
+                        </div>
+
+                        <div class="w-full justify-start">
+                            <button type="submit"
+                                class="border border-[#353560] p-2 rounded-xl bg-white cursor-pointer hover:border-[#353560] hover:shadow-lg hover:bg-[#353560]hover:text-white">Editar
+                                tarea</button>
+                        </div>
+
+                    </div>
+                </form>
+                <form action="{{ route('tasks.destroy', $task) }}" method="POST">
+                    @csrf
+                    @method('delete')
+                    <button type="submit"
+                        class="border absolute bottom-5 right-10 border-[#353560] p-2 rounded-xl bg-white cursor-pointer hover:border-[#353560] hover:shadow-lg">
+                        <img src="{{ asset('Svg/All/linear/trash.svg') }}" width="24px"/>
+                    </button>
+                </form>
+            </div>
         </div>
-        <div class="flex justify-center">
-            <form action="{{ route('tasks.update', $task) }}" method="POST" class="flex flex-col items-start">
 
-                @csrf
-
-                @method('put')
-
-                <label for="">
-                    Nombre de la tarea:
-                    <br>
-                    <input type="text" name="task_title" value="{{ old('task_title', $task->task_title) }}" class="text-black w-96 p-1">
-                </label>
-
-                @error('task_title')
-
-                    <small>*{{$message}}</small>
-
-                @enderror
-
-                <br>
-                <label for="">
-                    Descripcion de la tarea:
-                    <br>
-                    <textarea name="description" rows="5" class="text-black w-96 p-1">{{ old('description', $task->description) }}</textarea>
-                </label>
-
-                @error('description')
-
-                    <small>*{{$message}}</small>
-
-                @enderror
-
-                <br>
-                <label for="">
-                    Fecha finalizacion de la tarea:
-                    <br>
-                    <input type="date" name="date" value="{{ old('date', $task->date) }}" class="text-black w-96 p-1">
-                </label>
-
-                @error('date')
-
-                    <small>*{{$message}}</small>
-
-                @enderror
-
-                <br>
-                <button type="submit" class="border border-blue-300 p-2 rounded-xl text-blue-300 bg-blue-600">Actualizar tarea</button>
-            </form>
-        </div>
     </div>
 @endsection

@@ -1,4 +1,4 @@
-@extends('layouts.home')
+@extends('layouts.nav')
 
 @section('content')
     <div class="h-full w-9/12 flex grow flex-col px-1">
@@ -13,7 +13,7 @@
                 <ul id="tasksPorHacer" class="task-list">
                     @foreach ($tasks_Pendiente as $task)
                         <br>
-                        <a href="{{ route('tasks.show', $task) }}">
+                        <a href="{{ route('tasks.edit', $task) }}">
                             <li
                                 class="rounded-xl border text-white bg-gradient-to-r from-red-300 from-5% to-transparent to-5% ">
                                 <div class="p-1 pl-5 bg-transparent my-0"> {{ $task->task_title }} </div>
@@ -30,7 +30,7 @@
                 <ul id="tasksHaciendo" class="task-list">
                     @foreach ($tasks_Haciendo as $task)
                         <br>
-                        <a href="{{ route('tasks.show', $task) }}">
+                        <a href="{{ route('tasks.edit', $task) }}">
                             <li
                                 class="rounded-xl border text-white bg-gradient-to-r from-red-300 from-5% to-transparent to-5%">
                                 <div class="p-1 pl-5 bg-transparent my-0"> {{ $task->task_title }} </div>
@@ -47,7 +47,7 @@
                 <ul id="tasksTerminado">
                     @foreach ($tasks_Terminado as $task)
                         <br>
-                        <a href="{{ route('tasks.show', $task) }}">
+                        <a href="{{ route('tasks.edit', $task) }}">
                             <li
                                 class="rounded-xl border text-white bg-gradient-to-r from-red-300 from-5% to-transparent to-5% ">
                                 <div class="p-1 pl-5 bg-transparent"> {{ $task->task_title }} </div>
