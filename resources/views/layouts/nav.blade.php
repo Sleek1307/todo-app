@@ -76,12 +76,6 @@
                             </div>
 
                         </li>
-                        <li class="hover:bg-gray-200 text-gray-500 font-bold pl-5">
-                            <a rel="noopener noreferrer" href="#" class="flex items-center p-2 space-x-3 rounded-md">
-                                <img src="{{ asset('Svg/All/linear/document.svg') }}" alt="">
-                                <span>Tareas del dia</span>
-                            </a>
-                        </li>
                     </ul>
                 </div>
             </div>

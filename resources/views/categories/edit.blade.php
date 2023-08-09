@@ -1,4 +1,4 @@
-@extends('layouts.home')
+@extends('layouts.nav')
 
 @section('content')
     <div class="h-full aspect-auto flex grow flex-col px-1 m-2 text-white">

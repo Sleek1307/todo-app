@@ -14,7 +14,8 @@ class Task extends Model
         'description',
         'status',
         'date',
-        'category_id'
+        'category_id',
+        'user_id'
     ];
 
     public function category()

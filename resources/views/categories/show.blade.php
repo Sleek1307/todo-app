@@ -1,4 +1,4 @@
-@extends('layouts.home')
+@extends('layouts.nav')
 
 @section('content')
     <div class="grow m-2 h-full aspect-auto">

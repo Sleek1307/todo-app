@@ -44,7 +44,7 @@ Route::prefix("home")->group(function() {
     Route::get("/calendar", CalendarController::class)->name("home.calendar");
 });
 
- Route::controller(TaskController::class)->group(function(){
+Route::controller(TaskController::class)->group(function(){
     Route::get('tasks/create', 'create')->name('tasks.create');
 
     Route::post('tasks', 'store')->name('tasks.store');
