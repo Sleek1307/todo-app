@@ -1,5 +1,9 @@
 @extends('layouts.nav')
 
+@section('block_files')
+    @vite('resources/js/AJAX/task.js')
+@endsection
+
 @section('content')
     <div class="h-full aspect-auto flex grow flex-col px-1 m-2 text-white">
         {{-- * ================================================ boton de volver ================================================ --}}
@@ -78,22 +82,21 @@
                             @enderror
                         </div>
 
-                        <div class="w-full justify-start">
+                        <div class="w-full flex justify-start gap-2">
                             <button type="submit"
                                 class="border border-[#353560] p-2 rounded-xl bg-white cursor-pointer hover:border-[#353560] hover:shadow-lg hover:bg-[#353560]hover:text-white">Editar
                                 tarea</button>
+                            <button type="button" id="delete-task" data-id-task="{{ $task->id }}"
+                                class="border border-[#353560] p-2 rounded-xl bg-white cursor-pointer hover:border-[#353560] hover:shadow-lg">
+                                <img src="{{ asset('Svg/All/linear/trash.svg') }}" width="24px" />
+                            </button>
                         </div>
+
 
                     </div>
                 </form>
-                <form action="{{ route('tasks.destroy', $task) }}" method="POST">
-                    @csrf
-                    @method('delete')
-                    <button type="submit"
-                        class="border absolute bottom-5 right-10 border-[#353560] p-2 rounded-xl bg-white cursor-pointer hover:border-[#353560] hover:shadow-lg">
-                        <img src="{{ asset('Svg/All/linear/trash.svg') }}" width="24px"/>
-                    </button>
-                </form>
+
+
             </div>
         </div>
 

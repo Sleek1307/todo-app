@@ -1,5 +1,9 @@
 @extends('layouts.nav')
 
+@section('block_files')
+    @vite('resources/js/AJAX/category.js')
+@endsection
+
 @section('content')
     <div class="h-full aspect-auto flex grow flex-col px-1 m-2 text-white">
         {{-- * ================================================ boton de volver ================================================ --}}
@@ -50,24 +54,24 @@
                             @enderror
                         </div>
 
-                        <div class="w-full flex justify-start">
+
+                        <div class="w-full flex justify-start gap-3">
                             <button type="submit"
                                 class="border border-[#353560] p-2 rounded-xl bg-white cursor-pointer hover:border-[#353560] hover:shadow-lg hover:bg-[#353560] hover:text-white">Actualizar
                                 categoria
+                            </button>
+                            <button type="button" data-id-categorie="{{$category->id}}" id="delete-category"
+                                class="border border-[#353560] p-2 rounded-xl bg-white cursor-pointer hover:border-[#353560] hover:shadow-lg">
+                                <img src="{{ asset('Svg/All/linear/trash.svg') }}" width="24px" />
                             </button>
                         </div>
 
                     </div>
                 </form>
 
-                <form action="{{ route('categories.destroy', $category) }}" method="POST">
-                    @csrf
-                    @method('delete')
-                    <button type="submit"
-                        class="border absolute bottom-5 right-10 border-[#353560] p-2 rounded-xl bg-white cursor-pointer hover:border-[#353560] hover:shadow-lg">
-                        <img src="{{ asset('Svg/All/linear/trash.svg') }}" width="24px" />
-                    </button>
-                </form>
+
+
+
 
             </div>
 

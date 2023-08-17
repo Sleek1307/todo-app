@@ -7,6 +7,9 @@ use App\Http\Requests\StoreTask;
 use App\Http\Requests\UpdateTask;
 use App\Models\Category;
 use App\Models\Task;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
+
 
 class TaskController extends Controller
 {
@@ -27,7 +30,7 @@ class TaskController extends Controller
      */
     public function create()
     {
-        $categories = Category::orderBy('created_at', 'desc')->paginate(3);
+        $categories = Category::where("user_id", auth()->user()->getAuthIdentifier())->orderBy('created_at', 'desc')->paginate(3);
         return view("tasks.create", compact("categories"));
     }
 
@@ -36,7 +39,7 @@ class TaskController extends Controller
      */
     public function store(StoreTask $request)
     {
-        $request->merge(["category_id"=>intval($request->input("category_id")), "user_id"=>auth()->user()->getAuthIdentifier()]);
+        $request->merge(["category_id" => intval($request->input("category_id")), "user_id" => auth()->user()->getAuthIdentifier()]);
 
         $task = Task::create($request->all());
 
@@ -48,7 +51,7 @@ class TaskController extends Controller
      */
     public function show(Task $task)
     {
-        $categories = Category::orderBy('created_at', 'desc')->paginate(3);
+        $categories = Category::where("user_id", auth()->user()->getAuthIdentifier())->orderBy('created_at', 'desc')->paginate(3);
 
         return view('tasks.show', compact('task', 'categories'));
     }
@@ -58,7 +61,8 @@ class TaskController extends Controller
      */
     public function edit(Task $task)
     {
-        $categories = Category::orderBy('created_at', 'desc')->paginate(3);
+        $categories = Category::where("user_id", auth()->user()->getAuthIdentifier())->orderBy('created_at', 'desc')->paginate(3);
+
 
         return view('tasks.edit', compact('task', 'categories'));
     }
@@ -68,8 +72,6 @@ class TaskController extends Controller
      */
     public function update(UpdateTask $request, Task $task)
     {
-
-        var_dump(request()->all());
         $task->update($request->all());
 
         return redirect()->route('home');
@@ -82,6 +84,22 @@ class TaskController extends Controller
     {
         $task->delete();
 
-        return redirect()->route('home');
+        return response()->json(["Hola" => "Mundo"]);
+    }
+
+    /*
+        Update with ajax
+    */
+    public function updateAjax(Request $request){
+
+        $task = Task::find($request->all()["id"]);
+
+        $task->update($request->all());
+
+        // return response()->json(["Hola" => "hola mundo"]);
+ 
+        
+
+        return "Hola mundo";
     }
 }

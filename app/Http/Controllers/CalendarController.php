@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 class CalendarController extends Controller
 {
     public function __invoke(){
-        $categories = Category::orderBy('created_at', 'desc')->paginate(3);
+        $categories = Category::orderBy('created_at', 'desc')->where("user_id", auth()->user()->getAuthIdentifier())->paginate(3);
         return view("calendar", compact("categories"));
     }
 }

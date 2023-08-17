@@ -15,8 +15,8 @@ class categoryController extends Controller
      */
     public function index()
     {
-        $categories = Category::orderBy('created_at', 'desc')->paginate(3);
-        $all_categories = Category::orderBy('created_at', 'desc')->get();
+        $categories = Category::where("user_id", auth()->user()->getAuthIdentifier())->orderBy('created_at', 'desc')->paginate(3);
+        $all_categories = Category::where("user_id", auth()->user()->getAuthIdentifier())->orderBy('created_at', 'desc')->get();
 
         return view('categories.index', compact('categories', 'all_categories'));
     }
@@ -26,7 +26,7 @@ class categoryController extends Controller
      */
     public function create()
     {
-        $categories = Category::orderBy('created_at', 'desc')->paginate(3);
+        $categories = Category::where("user_id", auth()->user()->getAuthIdentifier())->orderBy('created_at', 'desc')->paginate(3);
 
         return view('categories.create', compact('categories'));
     }
@@ -36,6 +36,9 @@ class categoryController extends Controller
      */
     public function store(StoreCategory $request)
     {
+
+        $request->merge(["user_id" => auth()->user()->getAuthIdentifier()]);
+
         $category = Category::create($request->all());
 
         return redirect()->route('home');
@@ -46,7 +49,7 @@ class categoryController extends Controller
      */
     public function show(Category $category)
     {
-        $categories = Category::orderBy('created_at', 'desc')->paginate(3);
+        $categories = Category::where("user_id", auth()->user()->getAuthIdentifier())->orderBy('created_at', 'desc')->paginate(3);
 
         return view('categories.show', compact('category', 'categories'));
     }
@@ -56,7 +59,7 @@ class categoryController extends Controller
      */
     public function edit(Category $category)
     {
-        $categories = Category::orderBy('created_at', 'desc')->paginate(3);
+        $categories = Category::where("user_id", auth()->user()->getAuthIdentifier())->orderBy('created_at', 'desc')->paginate(3);
 
         return view('categories.edit', compact('category', 'categories'));
     }
@@ -78,6 +81,6 @@ class categoryController extends Controller
     {
         $category->delete();
 
-        return redirect()->route('home');
+        return response()->json(["deleted" => true]);
     }
 }

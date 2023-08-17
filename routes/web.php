@@ -28,15 +28,6 @@ Route::prefix("auth")->group(function () {
     Route::get("/forgot", [RestoreController::class, "show"])->name("auth.forgot");
 
     Route::post("/forgot", [RestoreController::class, "sendRestoreEmail"])->name("auth.forgot_email");
-
-    // Route::post("/restorePassword", function () {
-    //     return "Estas restaurando la contraseña";
-    // });
-
-    // Route::post("/sendRestoreMail", function() {
-    //     return "Estas enviando el email de recuperacion";
-    // });
-
 });
 
 Route::prefix("home")->group(function() {
@@ -44,21 +35,23 @@ Route::prefix("home")->group(function() {
     Route::get("/calendar", CalendarController::class)->name("home.calendar");
 });
 
-Route::controller(TaskController::class)->group(function(){
-    Route::get('tasks/create', 'create')->name('tasks.create');
+// Route::controller(TaskController::class)->group(function(){
 
-    Route::post('tasks', 'store')->name('tasks.store');
+//     Route::get('tasks/create', 'create')->name('tasks.create');
 
-    Route::get('tasks/{task}', 'show')->name('tasks.show');
+//     Route::post('tasks', 'store')->name('tasks.store');
 
-    Route::get('tasks/{task}/edit', 'edit')->name('tasks.edit');
+//     Route::get('tasks/{task}', 'show')->name('tasks.show');
 
-    Route::put('tasks/{task}', 'update')->name('tasks.update');
+//     Route::get('tasks/{task}/edit', 'edit')->name('tasks.edit');
 
-    Route::get('tasks/{task}', 'destroy')->name('tasks.destroy');
-});
+//     Route::put('tasks/{task}', 'update')->name('tasks.update');
+
+//     Route::delete('tasks/{task}', 'destroy')->name('tasks.destroy');
+// });
 
 Route::resource('tasks', TaskController::class);
 
-//? Categorys Routes
 Route::resource('categories', CategoryController::class);
+
+Route::prefix("async")->post("/", [TaskController::class, "updateAjax"]);
