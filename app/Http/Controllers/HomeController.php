@@ -22,7 +22,7 @@ class HomeController extends Controller
         $tasks_Terminado = Task::with("category")->where("user_id", auth()->user()->getAuthIdentifier())->where('status', '2')->orderBy('id', 'asc')->paginate();
 
         //! Variables Categorias
-        $categories = Category::orderBy('created_at', 'desc')->where("user_id", auth()->user()->getAuthIdentifier())->paginate(3);
+        $categories = Category::orderBy('created_at', 'desc')->where("user_id", auth()->user()->getAuthIdentifier())->get();
 
         return view('todayTasks', compact('tasks_Pendiente', 'tasks_Haciendo', 'tasks_Terminado', 'categories'));
     }

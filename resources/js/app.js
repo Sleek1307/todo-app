@@ -7,6 +7,9 @@ const doingTask = document.querySelector("#tasksHaciendo");
 const doedTasks = document.querySelector("#tasksTerminado");
 const tasks = document.querySelectorAll(".task");
 
+console.log(csrf_token)
+
+//FUNCTION TO UPDATE A TASK WITH AJAX
 const updateTask = (state, id) => {
     return fetch(`http://localhost:8000/async`, {
         headers: {
@@ -21,6 +24,7 @@ const updateTask = (state, id) => {
     });
 };
 
+//ALL THE EVENT LISTENERS TO MAKE THE DRAG AND DROP EFFECT
 categoryToggler.addEventListener("click", () => {
     categoryContainer.classList.toggle("hidden");
 });
@@ -49,9 +53,6 @@ if (toDoTasks !== null) {
             })
             .catch((error) => console.log(error));
 
-        toDoTasks.appendChild(
-            document.getElementById(`${e.dataTransfer.getData("text")}`)
-        );
     });
 }
 
