@@ -15,7 +15,7 @@ class categoryController extends Controller
      */
     public function index()
     {
-        $categories = Category::where("user_id", auth()->user()->getAuthIdentifier())->orderBy('created_at', 'desc')->paginate(3);
+        $categories = Category::where("user_id", auth()->user()->getAuthIdentifier())->orderBy('created_at', 'desc')->get();
         $all_categories = Category::where("user_id", auth()->user()->getAuthIdentifier())->orderBy('created_at', 'desc')->get();
 
         return view('categories.index', compact('categories', 'all_categories'));

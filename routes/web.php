@@ -10,16 +10,18 @@ use App\Http\Controllers\TaskController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CategoryController;
 use Illuminate\Support\Facades\Route;
- 
-Route::get('/',function () {
+
+Route::get('/', function () {
     return redirect("/auth/login");
 });
 
 Route::prefix("auth")->group(function () {
 
-    Route::get("/login",[LoginController::class, "show"]);
+    Route::get("/login", [LoginController::class, "show"]);
 
     Route::post("/login", [LoginController::class, "login"])->name("auth.login");
+
+    Route::get("/logout", [LoginController::class, "logout"])->name("auth.logout")->middleware("auth");
 
     Route::get("/register", [RegisterController::class, "show"])->name("auth.register");
 
@@ -30,9 +32,18 @@ Route::prefix("auth")->group(function () {
     Route::post("/forgot", [RestoreController::class, "sendRestoreEmail"])->name("auth.forgot_email");
 });
 
-Route::prefix("home")->group(function() {
-    Route::get("/", HomeController::class)->name("home");
-    Route::get("/calendar", CalendarController::class)->name("home.calendar");
+Route::middleware("auth")->group(function () {
+
+    Route::prefix("home")->group(function () {
+        Route::get("/", HomeController::class)->name("home");
+        Route::get("/calendar", CalendarController::class)->name("home.calendar");
+    });
+
+    Route::resource('tasks', TaskController::class);
+
+    Route::resource('categories', CategoryController::class);
+
+    Route::prefix("async")->post("/", [TaskController::class, "updateAjax"]);
 });
 
 // Route::controller(TaskController::class)->group(function(){
@@ -49,9 +60,3 @@ Route::prefix("home")->group(function() {
 
 //     Route::delete('tasks/{task}', 'destroy')->name('tasks.destroy');
 // });
-
-Route::resource('tasks', TaskController::class);
-
-Route::resource('categories', CategoryController::class);
-
-Route::prefix("async")->post("/", [TaskController::class, "updateAjax"]);

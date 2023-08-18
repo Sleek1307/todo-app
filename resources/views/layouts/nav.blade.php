@@ -8,7 +8,7 @@
     <div class="h-5/6 w-11/12 flex items-center justify-center">
         <div class="flex justify-start items-start h-full w-full bg-transparent rounded-3xl border">
             {{-- * INICIO lateral nav bar --}}
-            <div class="h-full w-[200px] p-3 dark:bg-gray-100 dark:text-gray-900 rounded-l-3xl">
+            <div class="h-full w-[200px] p-3 dark:bg-gray-100 dark:text-gray-900 rounded-l-3xl flex flex-col items-center justify-start">
                 <div class="flex items-center p-2 space-x-4 border-b border-gray-500">
                     <img src="https://source.unsplash.com/100x100/?portrait" alt=""
                         class="w-12 h-12 rounded-full bg-gray-700">
@@ -23,7 +23,7 @@
                 <div class="divide-y divide-gray-700">
                     <ul class="pt-2 pb-4 space-y-1 text-sm">
                         <li class=" text-gray-500 font-bold ">
-                            <div class="pl-5 w-100 hover:bg-gray-200 focus:bg-gray-300">
+                            <div class="pl-5 w-100 hover:bg-gray-200 focus:bg-gray-300 rounded-md">
                                 <a rel="noopener noreferrer" href="{{ route('home') }}"
                                     class="flex items-center p-2 space-x-3 rounded-md">
                                     <img src="{{ asset('Svg/All/linear/home.svg') }}" alt="">
@@ -40,15 +40,17 @@
                                         <img src="{{ asset('Svg/All/linear/clipboard-text.svg') }}" alt="Categorias">
                                         <span>Categorias</span>
                                     </a>
-                                    <div id="category-toggler" class="hover:bg-gray-300 cursor-pointer text-center p-1 rounded-full w-[28px] h-[28px]">
-                                        <img src="{{asset('Svg/All/linear/arrow-down-2.svg')}}" alt="">
+                                    <div id="category-toggler"
+                                        class="hover:bg-gray-300 cursor-pointer text-center p-1 rounded-full w-[28px] h-[28px]">
+                                        <img src="{{ asset('Svg/All/linear/arrow-down-2.svg') }}" alt="">
                                     </div>
                                 </div>
 
                             </div>
 
                             {{-- * INICIO Categorias --}}
-                            <ul class="pb-2 text-[10px] grid grid-cols-4 max-h-[116px] overflow-auto scrollbar" id="category-container">
+                            <ul class="pb-2 text-[10px] grid grid-cols-4 max-h-[116px] overflow-auto scrollbar"
+                                id="category-container">
                                 @foreach ($categories as $category)
                                     <li class="col-start-2 col-span-3">
                                         <a rel="noopener noreferrer" href="{{ route('categories.edit', $category) }}"
@@ -74,7 +76,7 @@
                             {{-- ! FIN Categorias --}}
                         </li>
                         <li class="text-gray-500 font-bold">
-                            <div class="w-100 hover:bg-gray-200 focus:bg-gray-300 pl-5">
+                            <div class="w-100 hover:bg-gray-200 focus:bg-gray-300 pl-5 rounded-md">
                                 <a rel="noopener noreferrer" href="{{ route('home.calendar') }}"
                                     class="flex items-center p-2 space-x-3 rounded-md">
                                     <img src="{{ asset('Svg/All/linear/calendar-1.svg') }}" alt="Calendario">
@@ -83,7 +85,18 @@
                             </div>
 
                         </li>
+
                     </ul>
+                </div>
+                <div class="bottom-[20px] w-full flex text-gray-500 font-bold flex-1 items-end justify-center rounded-md">
+                    <a href="{{route('auth.logout')}}">
+                        <div class="flex items-center gap-2 hover:bg-gray-200 p-2 rounded-lg" >
+                            <img src="{{asset('Svg/All/linear/close-circle.svg')}}" alt="">
+                        <span>
+                            Cerrar sesion
+                        </span>
+                        </div>
+                    </a>
                 </div>
             </div>
             {{-- ! FIN lateran nav bar --}}
