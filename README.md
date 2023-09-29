@@ -1,7 +1,7 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
 # todo-api
-API para una todo app con capacidad de registro de usuario
+Una todo app con capacidad de registro de usuario usando laravel y MySQL
 =======
 =======
 >>>>>>> 8777f141a5b41a5903a9ea8710245c3336b28d38
