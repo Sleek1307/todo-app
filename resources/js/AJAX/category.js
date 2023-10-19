@@ -3,7 +3,7 @@ const csrf_token = document.querySelector("meta[name=csrf-token]").content;
 
 deletCategorie.addEventListener("click", async () => {
     const idCategorie = deletCategorie.dataset["idCategorie"];
-    fetch(`http://127.0.0.1:8000/categories/${idCategorie}`, {
+    fetch(`http://127.0.0.1:8000/api/categories/${idCategorie}`, {
         headers: {
             "X-CSRF-TOKEN": csrf_token,
         },

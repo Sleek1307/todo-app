@@ -17,7 +17,7 @@ class LoginController extends Controller
     {
 
         $credentials = $request->getCredentials();
-
+        
         if (!Auth::attempt($credentials)) {
             return redirect()->to("/auth/login")->withErrors(trans("auth.failed"));
         }
@@ -39,6 +39,6 @@ class LoginController extends Controller
 
     protected function authenticated(Request $request, $user)
     {
-        return redirect()->intended("/home");
+        return redirect()->intended("/tasks");
     }
 }

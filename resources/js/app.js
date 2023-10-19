@@ -7,11 +7,21 @@ const doingTask = document.querySelector("#tasksHaciendo");
 const doedTasks = document.querySelector("#tasksTerminado");
 const tasks = document.querySelectorAll(".task");
 
-console.log(csrf_token)
+const cards = document.querySelectorAll(".card");
+
+cards.forEach((card) => {
+    const cardToggle = card.getElementsByClassName("card-toggle")[0];
+    cardToggle.addEventListener("click", () => {
+
+        const cardContent = card.getElementsByClassName("card-content")[0];
+        
+        cardContent.classList.toggle("card-active")
+    });
+});
 
 //FUNCTION TO UPDATE A TASK WITH AJAX
 const updateTask = (state, id) => {
-    return fetch(`http://localhost:8000/async`, {
+    return fetch(`http://localhost:8000/api/tasks/update`, {
         headers: {
             "X-CSRF-TOKEN": csrf_token,
             "Content-Type": "application/json",
@@ -52,7 +62,6 @@ if (toDoTasks !== null) {
                 console.log(data);
             })
             .catch((error) => console.log(error));
-
     });
 }
 
@@ -80,15 +89,12 @@ if (doedTasks !== null) {
     });
 
     doedTasks.addEventListener("drop", (e) => {
-
         const id = e.dataTransfer.getData("text");
 
         updateTask(2, id)
             .then((response) => response.text())
             .then((data) => {
-                doedTasks.appendChild(
-                    document.getElementById(`${id}`)
-                );
+                doedTasks.appendChild(document.getElementById(`${id}`));
                 console.log(data);
             })
             .catch((error) => console.log(error));
