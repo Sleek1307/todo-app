@@ -2,6 +2,7 @@
 
 // use App\Http\Controllers\HomeController;
 use App\Http\Controllers\CalendarController;
+use App\Http\Controllers\ForgotPasswordController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegisterController;
@@ -21,15 +22,20 @@ Route::prefix("auth")->group(function () {
 
     Route::post("/login", [LoginController::class, "login"])->name("auth.login");
 
-    Route::get("/logout", [LoginController::class, "logout"])->name("auth.logout")->middleware("auth");
-
     Route::get("/register", [RegisterController::class, "show"])->name("auth.register");
 
     Route::post("/register", [RegisterController::class, "register"])->name("auth.register");
 
-    Route::get("/forgot", [RestoreController::class, "show"])->name("auth.forgot");
+    //Rutas de recuperacion de contraseña
+    Route::get("/forgot-password", [ForgotPasswordController::class, "show"])->name("password.request");
 
-    Route::post("/forgot", [RestoreController::class, "sendRestoreEmail"])->name("auth.forgot_email");
+    Route::post("/forgot-password", [ForgotPasswordController::class, "create"])->name("password.email");
+
+    Route::get('/reset-password/{token}', [RestoreController::class, "show"])->middleware('guest')->name('password.reset');
+
+    Route::post('/reset-password', [RestoreController::class, "store"])->middleware('guest')->name("password.update");
+
+    Route::get("/logout", [LoginController::class, "logout"])->name("auth.logout")->middleware("auth");
 });
 
 Route::middleware("auth")->group(function () {
@@ -42,21 +48,4 @@ Route::middleware("auth")->group(function () {
     Route::resource('tasks', TaskController::class);
 
     Route::resource('categories', CategoryController::class);
-
-    Route::prefix("async")->post("/", [TaskController::class, "updateAjax"]);
 });
-
-// Route::controller(TaskController::class)->group(function(){
-
-//     Route::get('tasks/create', 'create')->name('tasks.create');
-
-//     Route::post('tasks', 'store')->name('tasks.store');
-
-//     Route::get('tasks/{task}', 'show')->name('tasks.show');
-
-//     Route::get('tasks/{task}/edit', 'edit')->name('tasks.edit');
-
-//     Route::put('tasks/{task}', 'update')->name('tasks.update');
-
-//     Route::delete('tasks/{task}', 'destroy')->name('tasks.destroy');
-// });

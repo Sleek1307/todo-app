@@ -24,7 +24,7 @@
                     <ul class="pt-2 pb-4 space-y-1 text-sm">
                         <li class=" text-gray-500 font-bold ">
                             <div class="pl-5 w-100 hover:bg-gray-200 focus:bg-gray-300 rounded-md">
-                                <a rel="noopener noreferrer" href="{{ route('home') }}"
+                                <a rel="noopener noreferrer" href="{{ route('tasks.index') }}"
                                     class="flex items-center p-2 space-x-3 rounded-md">
                                     <img src="{{ asset('Svg/All/linear/home.svg') }}" alt="">
                                     <span>Inicio</span>

@@ -18,11 +18,14 @@ class TaskController extends Controller
      */
     public function index()
     {
-        $tasks_Pendiente = Task::where('status', '0')->orderBy('id', 'asc')->paginate();
-        $tasks_Haciendo = Task::where('status', '1')->orderBy('id', 'asc')->paginate();
-        $tasks_Terminado = Task::where('status', '2')->orderBy('id', 'asc')->paginate();
+        $tasks_Pendiente = Task::with("category")->where("user_id", auth()->user()->getAuthIdentifier())->where('status', '0')->orderBy('id', 'asc')->paginate();
+        $tasks_Haciendo = Task::with("category")->where("user_id", auth()->user()->getAuthIdentifier())->where('status', '1')->orderBy('id', 'asc')->paginate();
+        $tasks_Terminado = Task::with("category")->where("user_id", auth()->user()->getAuthIdentifier())->where('status', '2')->orderBy('id', 'asc')->paginate();
 
-        return view('tasks.index', compact('tasks_Pendiente', 'tasks_Haciendo', 'tasks_Terminado'));
+        //! Variables Categorias
+        $categories = Category::orderBy('created_at', 'desc')->where("user_id", auth()->user()->getAuthIdentifier())->get();
+
+        return view('tasks.index', compact('tasks_Pendiente', 'tasks_Haciendo', 'tasks_Terminado', 'categories'));
     }
 
     /**
@@ -90,16 +93,15 @@ class TaskController extends Controller
     /*
         Update with ajax
     */
-    public function updateAjax(Request $request){
+    public function asyncUpdate(Request $request)
+    {
 
         $task = Task::find($request->all()["id"]);
 
         $task->update($request->all());
 
-        // return response()->json(["Hola" => "hola mundo"]);
- 
-        
-
-        return "Hola mundo";
+        return response()->json([
+            "success" => true,
+        ]);
     }
 }

@@ -73,7 +73,7 @@
     </form>
 
     <div class="flex items-center justify-center gap-5 mt-4 w-[350px]">
-        <a href="{{ route('auth.forgot') }}"
+        <a href="{{ route('password.request') }}"
             class="border px-4 flex items-center h-[30px] text-xs text-[#353560] font-extrabold rounded-full shadow hover:bg-[#353560] hover:text-white transition-all duration-300">Recuperar
             contraseña</a>
         <a href="{{ route('auth.login') }}"

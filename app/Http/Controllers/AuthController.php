@@ -11,6 +11,6 @@ class AuthController extends Controller
     }
 
     function showRestoreView(){
-        return view("restore");
+        return view("forgot");
     }
 }
