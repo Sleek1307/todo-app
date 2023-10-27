@@ -14,8 +14,6 @@ class RegisterController extends Controller
 
     public function register (RegisterRequest $request){
 
-        dump($request->validated());
-
         $user = User::create($request->validated());
 
         // $user = new User;
@@ -26,8 +24,6 @@ class RegisterController extends Controller
 
         // $user->save();
 
-        Auth::login($user);
-
-        return redirect('/home')->with('success', "Usuario registrado exitosamente");
+        return redirect('/auth/login')->with('success', "Usuario registrado exitosamente");
     }
 }

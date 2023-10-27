@@ -9,13 +9,30 @@ const tasks = document.querySelectorAll(".task");
 
 const cards = document.querySelectorAll(".card");
 
+const avatarUrl = document.querySelector("#avatar_url");
+const avatarImg = document.querySelector("#avatar_img");
+
+if (avatarUrl !== null) {
+    avatarUrl.addEventListener("change", (e) => {
+        var file = e.target.files[0];
+        var lector = new FileReader();
+
+        lector.onload = (e) => {
+            avatarImg.src = lector.result;
+        };
+
+        if (file) {
+            lector.readAsDataURL(file)
+        }
+    });
+}
+
 cards.forEach((card) => {
     const cardToggle = card.getElementsByClassName("card-toggle")[0];
     cardToggle.addEventListener("click", () => {
-
         const cardContent = card.getElementsByClassName("card-content")[0];
-        
-        cardContent.classList.toggle("card-active")
+
+        cardContent.classList.toggle("card-active");
     });
 });
 

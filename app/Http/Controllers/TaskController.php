@@ -18,14 +18,18 @@ class TaskController extends Controller
      */
     public function index()
     {
-        $tasks_Pendiente = Task::with("category")->where("user_id", auth()->user()->getAuthIdentifier())->where('status', '0')->orderBy('id', 'asc')->paginate();
-        $tasks_Haciendo = Task::with("category")->where("user_id", auth()->user()->getAuthIdentifier())->where('status', '1')->orderBy('id', 'asc')->paginate();
-        $tasks_Terminado = Task::with("category")->where("user_id", auth()->user()->getAuthIdentifier())->where('status', '2')->orderBy('id', 'asc')->paginate();
+
+        date_default_timezone_set('America/Bogota');
+        $date = date("Y-m-d");
+
+        $tasks_Pendiente = Task::with("category")->where("user_id", auth()->user()->getAuthIdentifier())->where('status', '0')->where('date', $date)->orderBy('id', 'asc')->paginate(3);
+        $tasks_Haciendo = Task::with("category")->where("user_id", auth()->user()->getAuthIdentifier())->where('status', '1')->where('date', $date)->orderBy('id', 'asc')->paginate(3);
+        $tasks_Terminado = Task::with("category")->where("user_id", auth()->user()->getAuthIdentifier())->where('status', '2')->where('date', $date)->orderBy('id', 'asc')->paginate(3);
 
         //! Variables Categorias
         $categories = Category::orderBy('created_at', 'desc')->where("user_id", auth()->user()->getAuthIdentifier())->get();
 
-        return view('tasks.index', compact('tasks_Pendiente', 'tasks_Haciendo', 'tasks_Terminado', 'categories'));
+        return view('tasks.index', compact('tasks_Pendiente', 'tasks_Haciendo', 'tasks_Terminado', 'categories', 'date'));
     }
 
     /**
@@ -93,6 +97,19 @@ class TaskController extends Controller
     /*
         Update with ajax
     */
+
+    public function indexWithDate (Request $request) {
+
+        $date = $request->input("date");
+
+        $tasks_Pendiente = Task::with("category")->where("user_id", auth()->user()->getAuthIdentifier())->where('status', '0')->where('date', $request->only('date'))->orderBy('id', 'asc')->paginate(3);
+        $tasks_Haciendo = Task::with("category")->where("user_id", auth()->user()->getAuthIdentifier())->where('status', '1')->where('date', $request->only('date'))->orderBy('id', 'asc')->paginate(3);
+        $tasks_Terminado = Task::with("category")->where("user_id", auth()->user()->getAuthIdentifier())->where('status', '2')->where('date', $request->only('date'))->orderBy('id', 'asc')->paginate(3);
+
+        $categories = Category::orderBy('created_at', 'desc')->where("user_id", auth()->user()->getAuthIdentifier())->get();
+
+        return view('tasks.index', compact('tasks_Pendiente', 'tasks_Haciendo', 'tasks_Terminado', 'categories', 'date'));
+    }
     public function asyncUpdate(Request $request)
     {
 
