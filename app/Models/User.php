@@ -43,6 +43,10 @@ class User extends Authenticatable implements CanResetPassword
         'remember_token',
     ];
 
+    protected $attributes = [
+        'avatar_url' => 'avatar.jpg',
+    ];
+
     /**
      * The attributes that should be cast.
      *

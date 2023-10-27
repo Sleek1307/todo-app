@@ -2,9 +2,28 @@
 
 @section('content')
     <div class="h-full w-9/12 flex grow flex-col px-1">
-        <div class="flex flex-col">
-            <h2 class="pt-1 px-5 text-2xl text-white font-bold">Estas son tus tareas de hoy</h2>
-            <p class="mt-[-8px] px-5 pt-1 font-light text-sm text-gray-400">Martes 15 de Febrero</p>
+        <div class="flex justify-between items-center">
+            <div class="flex flex-col">
+                <h2 class="pt-1 px-5 text-2xl text-white font-bold">Estas son tus tareas de hoy</h2>
+                <p class="mt-[-8px] px-5 pt-1 font-light text-sm text-gray-400">
+                    {{ $date }}
+                </p>
+            </div>
+
+            <div>
+                <form action="{{route('index.date')}}" method="POST">
+                    @csrf
+                    <div class="flex gap-2 items-center">
+                        <input type="date" id="date" name="date" value="{{ old('date') }}"
+                            class="border rounded-md py-1 px-1 w-full focus:outline-0 focus:border-[#353560] focus:shadow-md" />
+
+                        <button class="bg-white text-sm font-bold py-1 px-4 rounded-full">
+                            Buscar
+                        </button>
+                    </div>
+
+                </form>
+            </div>
         </div>
 
         <div class="relative flex flex-row overflow-hidden gap-1 grow mb-3">

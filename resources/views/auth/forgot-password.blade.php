@@ -9,21 +9,24 @@
                 <label for="email" class="text-sm font-bold text-[#353560]">Email</label>
                 <input name="email" id="email" type="text" placeholder="email@example.com"
                     class="border rounded-md px-2 py-1 w-[300px]">
+                @error('email')
+                    <div class="w-100">
+                        <p class=" text-sm font-bold text-red-800">{{ $message }}</p>
+                    </div>
+                @enderror
             </div>
             <div class="flex items-center justify-start gap-5 w-[300px]">
                 <a href="{{ route('auth.login') }}"
                     class="border px-4 flex items-center h-[30px] text-xs text-[#353560] font-extrabold rounded-full shadow hover:bg-[#353560] hover:text-white transition-all duration-300">Volver
-                    a iniciar sesion</a>
+                    a iniciar sesion
+                </a>
             </div>
-            
-            @if()
 
-            
-            @error('email')
-                <div class="w-100">
-                    <p class=" text-sm font-bold text-red-800">{{ $message }}</p>
+            @if (session('status'))
+                <div class="w-100 bg-teal-100 p-2 rounded-md">
+                    <p class=" text-sm font-bold text-green-600">{{session('status')}}</p>
                 </div>
-            @enderror
+            @endif
 
             <button
                 class="border h-[35px] px-3 mt-6 text-md font-bold rounded-full shadow bg-[#353560] text-white hover:bg-white hover:text-[#353560] transition-all duration-200">

@@ -5,6 +5,7 @@ use App\Http\Controllers\CalendarController;
 use App\Http\Controllers\ForgotPasswordController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\RestoreController;
 use App\Http\Controllers\TaskController;
@@ -41,11 +42,16 @@ Route::prefix("auth")->group(function () {
 Route::middleware("auth")->group(function () {
 
     Route::prefix("home")->group(function () {
-        Route::get("/", HomeController::class)->name("home");
+        Route::get("/", function () {
+            return redirect("/tasks");
+        })->name("home");
         Route::get("/calendar", CalendarController::class)->name("home.calendar");
     });
 
     Route::resource('tasks', TaskController::class);
+    Route::post('/index/date',[TaskController::class, 'indexWithDate'])->name('index.date');
 
     Route::resource('categories', CategoryController::class);
+
+    Route::resource('profile', ProfileController::class);
 });
